@@ -4,6 +4,7 @@ class QuestionsController < ApplicationController
 
     def index
         @test = "Welcome PrintPages!!" 
+        @question = Question.page(params[:page])
     end
     
     def show

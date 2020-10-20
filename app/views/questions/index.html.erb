@@ -1,1 +1,30 @@
 <%= @test %>
+      <%# 検索フォーム %>
+        <dl class="searchbox">
+          <%= search_form_for @q do |f| %>
+            <dt><%= f.text_field :title_cont ,placeholder: '検索するテキストを入力...' %></dt>
+            <dd><%= f.submit ("検索") , class: 'search-btn'%></dd>
+          <% end %>
+        </dl>
+<table class="table mt-5 mb-5">
+  <%# <thead>
+    <tr>
+      <th>Title</th>
+      <th>投稿者</th>
+      <th>投稿日時</th>
+      <th></th>
+    </tr>
+  </thead> %>
+
+  <tbody>
+    <% @question.each do |question| %>
+      <tr><td><%=link_to question.title, question_path(question)%></td></tr>
+      <tr><td><%= question.user.name %></td>
+      <td><%= question.created_at.strftime('%Y/%m/%d %H:%M') %></td></tr>
+    <% end %>
+  </tbody>
+</table>
+  <%= paginate @question %>
+<br>
+
+<%= link_to '質問はこちら', new_question_path %>

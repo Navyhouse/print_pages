@@ -2,8 +2,11 @@
   <div class="header-logo">
     <%= link_to("Print Pages", "/") %>
   </div>
+  
   <ul>
     <% if user_signed_in? %>
+    user name:
+     <%= current_user.name %>
       <li>
         <%= link_to("質問作成", "/questions/new") %>
       </li>
@@ -19,4 +22,5 @@
       </li>
     <% end %>
   </ul>
+
 </header>
