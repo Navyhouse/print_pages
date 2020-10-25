@@ -1,6 +1,7 @@
 class QuestionsController < ApplicationController
     before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
     before_action :ensure_correct_user, only: [:edit, :update, :destroy]
+    impressionist :actions=> [:show]
 
     def index
         @test = "Welcome PrintPages!!" 
@@ -9,6 +10,7 @@ class QuestionsController < ApplicationController
     
     def show
         @question = Question.find(params[:id])
+        impressionist(@question, nil, unique: [:session_hash])
         @answer = Answer.new
     end
     
@@ -49,6 +51,15 @@ class QuestionsController < ApplicationController
         flash[:notice] = "成功！"
         redirect_to("/questions")
     end
+
+    def make_resolved
+      @question == Question.find(params[:question_id])
+       if @question.update(is_solved: true)
+         respond_to |format|
+         format.html{render :show}
+         format.js{}
+        end
+     end
 
     private
     def question_params

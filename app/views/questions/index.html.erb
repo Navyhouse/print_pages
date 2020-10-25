@@ -1,30 +1,33 @@
 <%= @test %>
-      <%# 検索フォーム %>
-        <dl class="searchbox">
-          <%= search_form_for @q do |f| %>
-            <dt><%= f.text_field :title_cont ,placeholder: '検索するテキストを入力...' %></dt>
-            <dd><%= f.submit ("検索") , class: 'search-btn'%></dd>
-          <% end %>
-        </dl>
-<table class="table mt-5 mb-5">
-  <%# <thead>
-    <tr>
-      <th>Title</th>
-      <th>投稿者</th>
-      <th>投稿日時</th>
-      <th></th>
-    </tr>
-  </thead> %>
 
+<%# 検索フォーム %>
+<form class="form-inline my-2 my-lg-0">
+  <%= search_form_for @search do |f| %>
+    <%= f.text_field :title_cont ,placeholder: 'キーワードで検索' %>
+    <%= f.submit ("検索") , class: '"btn btn-outline-success my-2 my-sm-0" type="submit"'%>
+  <% end %>
+</form>
+
+<%# questionハッシュから取り出してリストに表示 %>
+<table class="table mt-5 mb-5">
   <tbody>
-    <% @question.each do |question| %>
-      <tr><td><%=link_to question.title, question_path(question)%></td></tr>
-      <tr><td><%= question.user.name %></td>
-      <td><%= question.created_at.strftime('%Y/%m/%d %H:%M') %></td></tr>
+    <% @search_question.each do |question| %>
+      <tr>
+      <td>回答：<%= question.answer.count %>件</td>
+      <td><%= link_to question.title, question_path(question) %></td>
+      <td><%= question.user.name %></td>
+      <%# <td><%= question.created_at.strftime('%Y/%m/%d %H:%M')%>
+      <td><%= time_ago_in_words(question.created_at)+"前" %></td>
+      </tr>
     <% end %>
   </tbody>
 </table>
-  <%= paginate @question %>
-<br>
 
-<%= link_to '質問はこちら', new_question_path %>
+<%# ページネーションを表示kaminari %>
+<%= paginate @question %>
+
+
+<br>
+<%=link_to("questions/new") do %>
+  <button class="btn btn-secondary btn-lg" >質問する</button> 
+<%end%>

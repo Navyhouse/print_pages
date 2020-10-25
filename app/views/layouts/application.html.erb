@@ -10,13 +10,14 @@
   </head>
 
   <body>
-
-
-    <%= render 'layouts/header' %>
+    <div class="sticky-top">
+      <%= render 'layouts/header' %>
+    </div>
     <p><%= notice %></p>
     <p><%= alert %></p>
-    <div class="container">
+    <div class ="container">
       <%= yield %>
     </div>
   </body>
+  
 </html>
