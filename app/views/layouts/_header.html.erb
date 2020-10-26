@@ -1,36 +1,50 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <img src="/assets/machine_printer_offset_insatsu.png" width="30" height="30" class="d-inline-block align-top" alt="">
+   <%= link_to("PrintPages", "/", class:"navbar-brand") %>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-  <nav class= "navbar navbar-expand-lg navbar-light bg-light ">
-    <div class= "navbar-brand">
-     <%= link_to("Print Pages", "/") %>
-    </div>
-
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  
-    <div class="collapse navbar-collapse mr-auto mt-2 mt-lg-0" id="navbarNavAltMarkup">
-     <div class="navbar">
-      <ul class="navbar-nav">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+    <% if user_signed_in? %>
+      <li class="nav-item">
+        <%= link_to("質問する", "/questions/new", class: "nav-link") %>
+      </li>
         <li class="nav-item">
-          <% if user_signed_in? %>
+        <%= link_to("ログアウト", "/users/sign_out", method: :delete, data: {confirm: "本当にログアウトしますか？"}, class: "nav-link") %>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <img src="/assets/teacher.png" width="30" height="30" class="d-inline-block align-top" alt="">
           <%= current_user.name %>
-        </li>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+    <% else %>
+       <li class="nav-item">
+        <%= link_to("ログイン", "/users/sign_in", class: "nav-link") %>
         <li class="nav-item">
-          <%= link_to("質問する", "/questions/new") %>
-        </li>
-        <li class="nav-item">
-          <%= link_to("ログアウト", "/users/sign_out", method: :delete, data: {confirm: "本当にログアウトしますか？"}) %>
-        </li>
-          <% else %>
-           <li class="nav-item">
-            <%= link_to("新規登録", "/users/sign_up") %>
-           </li>
-           <li class="nav-item">
-            <%= link_to("ログイン", "/users/sign_in") %>
-           </li>
-        <% end %>
-      </ul>
-     </div>
-    </div>
-  
-  </nav>
+        <%= link_to("新規登録", "/users/sign_up", class: "nav-link") %>
+      </li>
+    <% end %>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+    <%= search_form_for @search do |f| %>
+      <%= f.text_field :title_cont ,placeholder: 'キーワードで検索', class:"form-control mr-sm-2" %>
+      <%= f.submit ("検索"), class: '"btn btn-outline-light my-2 my-sm-0" type="submit"'%>
+    <% end %>
+    </form>
+  </div>
+</nav>
