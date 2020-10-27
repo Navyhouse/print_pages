@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
   <img src="/assets/machine_printer_offset_insatsu.png" width="30" height="30" class="d-inline-block align-top" alt="">
    <%= link_to("PrintPages", "/", class:"navbar-brand") %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,14 +36,11 @@
         <%= link_to("新規登録", "/users/sign_up", class: "nav-link") %>
       </li>
     <% end %>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-      </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
     <%= search_form_for @search do |f| %>
       <%= f.text_field :title_cont ,placeholder: 'キーワードで検索', class:"form-control mr-sm-2" %>
-      <%= f.submit ("検索"), class: '"btn btn-outline-light my-2 my-sm-0" type="submit"'%>
+      <%= f.submit ("検索"), class: 'btn btn-secondary btn-lgy" type="submit"'%>
     <% end %>
     </form>
   </div>

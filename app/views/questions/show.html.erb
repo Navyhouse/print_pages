@@ -1,24 +1,26 @@
 <table class="table mt-5 mb-5">
   <tbody>
-      <tr><td><h5><%= @question.title %><h5></td></tr>
+      <tr><td><h5 class="p-4 bg-light text-dark"><%= @question.title %><h5></td></tr>
+      <tr><td>Name: <%= @question.user.name %></td></tr>
+      <tr><td>回答：<%= @question.answer.count %>件</td></tr>
+      <tr><td>View: <%= @question.impressionist_count %>PV</td></tr>
+      <tr><td>投稿: <%= @question.created_at.strftime('%Y/%m/%d %H:%M') %></td></tr>
       <tr><td><%= @question.body %></td></tr>
-      <tr><td>Name : <%= @question.user.name %></td></tr>
-      <tr><td>View : <%= @question.impressionist_count %>PV</td></tr>
   </tbody>
 </table> 
 
 <% if @question.user_id == current_user.id %>
 <%= link_to("編集", "/questions/#{@question.id}/edit") %>
-<%= link_to("削除", "/questions/#{@question.id}", method: :delete, data: {confirm: "本当に削除しますか？"}) %>
+<%# <%= link_to("削除", "/questions/#{@question.id}", method: :delete, data: {confirm: "本当に削除しますか？"}) %>
 <% end %>
 
 <div class="form-group">
    <%= form_with(model: [@question, @answer], local: true) do |f| %>
     <div class="form-group">
-      <%= f.label :body, "質問に答える" %><br>
-      <%= f.text_area :body %>
+      <%= f.label :body, "あなたの回答" %><br>
+      <%= f.text_area :body, class:"form-control" ,placeholder: '回答を入力してください。'  %>
     </div>
-    <button type="submit" class="btn btn-primary">回答する</button>
+    <button type="submit" class="btn btn-secondary btn-lgy">回答する</button>
   <% end %>
 </div>
 <hr>
@@ -27,10 +29,8 @@
   <tbody>
     <h5>【回答】</h5>
      <% @question.answer.each do |answer| %>
-       <tr>
-          <td><%= answer.body %></td>
-          <td><%= answer.user.name %></td>
-       </tr>
+       <tr><td><%= answer.user.name %></td>
+       <td><%= answer.body %></td></tr>
     <% end %>
 </tbody>
 </table> 

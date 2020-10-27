@@ -1,13 +1,21 @@
+<h4>質問する</h4>
+<div class="p-3 mb-2 bg-light text-dark">
+<p>良い回答を得るために</br>
+</br>
+回答してくれる方がわかりやすいような質問を心がけましょう。</br>
+具体的な事象や画像、既に施工した事を記載すると議論にならずにスムーズに回答が得られやすくなります。</br>
+質問するときのヒントも参照ください。</p></div>
+
 <form>
 <%= form_with(model: @question, local: true) do |f| %>
   <div class="form-group">
-    <%= f.label :title, "タイトル" %><br>
-    <%= f.text_field :title %>
+    <%= f.label :title, "質問タイトル" %><br>
+    <%= f.text_field :title, class:"form-control" %>
   </div>
   <div class="form-group">
     <%= f.label :body, "質問本文" %><br>
-    <%= f.text_area :body ,placeholder: 'ここに質問したいことを詳しく書いてください。' %>
+    <%= f.text_area :body, class:"form-control" ,placeholder: 'ここに質問したいことを詳しく書いてください。' %>
   </div>
-  <%= f.submit %>
+  <%= f.submit("質問する") %>
 <% end %>
 </form>
