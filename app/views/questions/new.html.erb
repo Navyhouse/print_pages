@@ -2,11 +2,11 @@
 <div class="p-3 mb-2 bg-light text-dark">
 <p>良い回答を得るために</br>
 </br>
-回答してくれる方がわかりやすいような質問を心がけましょう。</br>
-具体的な事象や画像、既に施工した事を記載すると議論にならずにスムーズに回答が得られやすくなります。</br>
-質問するときのヒントも参照ください。</p></div>
+  回答してくれる方がわかりやすいような質問を心がけましょう。</br>
+  具体的な事象や画像、既に施工した事を記載すると議論にならずにスムーズに回答が得られやすくなります。</br>
+  質問するときのヒントも参照ください。</p>
+</div>
 
-<form>
 <%= form_with(model: @question, local: true) do |f| %>
   <div class="form-group">
     <%= f.label :title, "質問タイトル" %><br>
@@ -14,8 +14,12 @@
   </div>
   <div class="form-group">
     <%= f.label :body, "質問本文" %><br>
-    <%= f.text_area :body, class:"form-control" ,placeholder: 'ここに質問したいことを詳しく書いてください。' %>
+    <%= f.text_area :body, class:"form-control",placeholder: 'ここに質問したいことを詳しく書いてください。' %>
   </div>
-  <%= f.submit("質問する") %>
+  <div class="form-group">
+    <%= f.label :image, "写真を貼る" %><br>
+    <%= f.file_field :image %>
+    <%# <%= f.submit 'アップロードする'%>
+  </div>
+  <button type="submit" class="btn btn-dark">質問する</button>
 <% end %>
-</form>
