@@ -6,6 +6,7 @@ class QuestionsController < ApplicationController
     def index
         @test = "Welcome PrintPages!!" 
         @question = Question.page(params[:page])
+        @users= User.all
     end
     
     def show
@@ -22,10 +23,10 @@ class QuestionsController < ApplicationController
       @question = Question.new(question_params)
       @question.user_id = current_user.id
       if @question.save
-        flash[:notice] = "成功！"
+        flash[:notice] = "質問は投稿されました。回答が届くまでお待ちください。"
         redirect_to("/questions/new")
       else
-        flash.now[:alert] = "失敗！"
+        flash.now[:alert] = "error！内容確認して再度投稿してください。"
         render("questions/new")
       end
     end

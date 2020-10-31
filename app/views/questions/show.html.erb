@@ -7,13 +7,14 @@
       <tr><td>投稿: <%= @question.created_at.strftime('%Y/%m/%d %H:%M') %></td></tr>
       <tr><td><%= @question.body %></td></tr>
       <tr><td><%= @question.image.url %></td></tr>
+      <tr><td>
+      <% if @question.user_id == current_user.id %>
+      <%= link_to("編集", "/questions/#{@question.id}/edit") %>
+      <%# <%= link_to("削除", "/questions/#{@question.id}", method: :delete, data: {confirm: "本当に削除しますか？"}) %>
+      <% end %>
+      </tr></td>
   </tbody>
 </table> 
-
-<% if @question.user_id == current_user.id %>
-<%= link_to("編集", "/questions/#{@question.id}/edit") %>
-<%# <%= link_to("削除", "/questions/#{@question.id}", method: :delete, data: {confirm: "本当に削除しますか？"}) %>
-<% end %>
 
 <div class="form-group">
    <%= form_with(model: [@question, @answer], local: true) do |f| %>
@@ -28,7 +29,7 @@
 
 <table class="table mt-5 mb-5">
   <tbody>
-    <h5>【回答】</h5>
+    <h5>【みんなの回答】</h5>
      <% @question.answer.each do |answer| %>
        <tr><td><%= answer.user.name %></td>
        <td><%= answer.body %></td></tr>

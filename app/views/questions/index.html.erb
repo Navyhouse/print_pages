@@ -1,3 +1,5 @@
+<div class="row">
+<div class="col-8">
 <%# bootstrap4でタブを実装 %>
 <ul class="nav nav-tabs">
   <li class="nav-item">
@@ -19,25 +21,37 @@
     <a class="nav-link" data-toggle="tab">解決済</a>
   </li>
 </ul>
+
 <%# questionハッシュから取り出してリストに表示 %>
-<table class="table mt-5 mb-5">
+<table class="table mt-6 mb-5">
   <tbody>
     <% @search_question.each do |question| %>
       <tr>
-      <td>回答：<%= question.answer.count %>件</td>
-      <td><%= link_to question.title, question_path(question) %></td>
+      <td class="small">回答:<%= question.answer.count %></td>
+      <td class="bold"><%= link_to question.title, question_path(question) %></td>
       <td><%= question.user.name %></td>
       <%# <td><%= question.created_at.strftime('%Y/%m/%d %H:%M')%>
-      <td><%= time_ago_in_words(question.created_at)+"前" %></td>
+      <td class="small"><%= time_ago_in_words(question.created_at)+"前" %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+  <%# ページネーションを表示kaminari %>
+  <%= paginate @question %>
+  <%=link_to("questions/new") do %>
+    <button class="btn btn-secondary btn-lg" >質問する</button> 
+  <%end%> 
+</div>
 
-<%# ページネーションを表示kaminari %>
-<%= paginate @question %>
+<div class="col-4">
+  <table class="table mt-6 mb-5">
+    <tbody>
+    <tr><th>ユーザーランキング</th></tr>
+    <% @users.each do |user| %>
+      <tr><td><%= user.name %></td></tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+</div>
 
-<br>
-<%=link_to("questions/new") do %>
-<button class="btn btn-secondary btn-lg" >質問する</button> 
-<%end%>
