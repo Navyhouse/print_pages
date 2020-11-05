@@ -1,57 +1,80 @@
 <div class="row">
-<div class="col-8">
-<%# bootstrap4でタブを実装 %>
-<ul class="nav nav-tabs">
-  <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab">新着</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" data-toggle="tab">アクティブ</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" data-toggle="tab">未回答</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" data-toggle="tab">未解決</a>
-  </li>
-    <li class="nav-item">
-    <a class="nav-link" data-toggle="tab">注目</a>
-  </li>
-    <li class="nav-item">
-    <a class="nav-link" data-toggle="tab">解決済</a>
-  </li>
-</ul>
+  <div class="col-8">
+    <%# bootstrap4でタブを実装 %>
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link active" data-toggle="tab">新着</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab">アクティブ</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab">未回答</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab">未解決</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab">注目</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab">解決済</a>
+      </li>
+    </ul>
 
-<%# questionハッシュから取り出してリストに表示 %>
-<table class="table mt-6 mb-5">
-  <tbody>
-    <% @search_question.each do |question| %>
-      <tr>
-      <td class="small">回答:<%= question.answer.count %></td>
-      <td class="bold"><%= link_to question.title, question_path(question) %></td>
-      <td><%= question.user.name %></td>
-      <%# <td><%= question.created_at.strftime('%Y/%m/%d %H:%M')%>
-      <td class="small"><%= time_ago_in_words(question.created_at)+"前" %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-  <%# ページネーションを表示kaminari %>
-  <%= paginate @question %>
-  <%=link_to("questions/new") do %>
-    <button class="btn btn-secondary btn-lg" >質問する</button> 
-  <%end%> 
-</div>
+    <%# questionハッシュから取り出してリストに表示 %>
+    <table class="table mt-6 mb-5">
+      <tbody>
+        <% @search_question.each do |question| %>
+          <tr>
+          <th class="small">回答<%= question.answer.count %></th>
+          <th class><%= link_to question.title, question_path(question) %></th>
+          <td class="small"><%= question.user.name %></td>
+          <%# <td><%= question.created_at.strftime('%Y/%m/%d %H:%M')%>
+          <td class="small"><%= time_ago_in_words(question.created_at)+"前" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%# ページネーションを表示kaminari %>
+    <%= paginate @question %>
+    <%=link_to("questions/new") do %>
+      <button class="btn btn-secondary btn-md" >質問する</button> 
+      <%end%> 
+  </div>
 
-<div class="col-4">
-  <table class="table mt-6 mb-5">
-    <tbody>
-    <tr><th>ユーザーランキング</th></tr>
-    <% @users.each do |user| %>
-      <tr><td><%= user.name %></td></tr>
-    <% end %>
-    </tbody>
-  </table>
-</div>
+  <div class="col-4">
+    <div class="card mt-3" style="width: 18rem;">
+      <div class="card-header"> はじめてみましょう！</div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">PrintPagesへログインする</li>
+          <li class="list-group-item">PrintPagesの簡単な説明を読む</li>
+          <li class="list-group-item">５つのMYタグを登録する</li>
+          <li class="list-group-item">３つの回答へ高評価（＋）をする</li>
+          <li class="list-group-item">回答または質問を投稿する</li>
+        </ul>
+    </div>
+
+    <div class="card mt-3 border-danger" style="width: 18rem;">
+      <div class="card-header bg-danger text-white">回答してみませんか？</div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"></li>
+          <li class="list-group-item"></li>
+          <li class="list-group-item"></li>
+        </ul>
+    </div>
+
+    <table class="table mt-6 mb-5">
+      <tbody>
+        <tr><th>ユーザーランキング</th></tr>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= user.id %></td>
+            <td><%= user.name %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
 

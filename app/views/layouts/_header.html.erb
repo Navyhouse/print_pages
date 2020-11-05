@@ -23,8 +23,11 @@
           <%= current_user.name %>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="/users/<%= current_user.id %>">ユーザー情報</a>
+          <a class="dropdown-item" href="#">質問</a>
+          <a class="dropdown-item" href="#">回答</a>
+          <a class="dropdown-item" href="#">バッジ</a>
+          <a class="dropdown-item" href="#">Score</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">Something else here</a>
         </div>

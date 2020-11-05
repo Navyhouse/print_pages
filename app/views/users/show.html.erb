@@ -1,6 +1,12 @@
 <h2>ユーザー情報</h2>
-<%= @user.name %>
-<hr>
-<% @user.questions.each do |question| %>
-<%= link_to(question.title, "/questions/#{question.id}") %>
-<% end %>
+<table class="table mt-5 mb-5">
+  <tbody>
+    <tr><td><%= @user.name %></td></tr>
+    <tr><td><%= @user.email %></td></tr>
+    <tr><td><%= @user.id %></td></tr>
+  </tbody>
+</table> 
+<%# <hr> %>
+<%# <% @user.questions.each do |question| %> %>
+<%# <%= link_to(question.title, "/questions/#{question.id}") %> %>
+<%# <% end %> %>
