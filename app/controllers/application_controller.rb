@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
     def set_search
       @search = Question.search(params[:q])
-      @search_question = @search.result
+      @question = @search.result
 
       #@q = Question.ransack(params[:q]) #ransackメソッド推奨
       #@question = @q.result.includes(:question).page(params[:page]) # 検索結果(検索しなければ全件取得)

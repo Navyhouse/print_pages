@@ -6,7 +6,15 @@
     <tr><td><%= @user.id %></td></tr>
   </tbody>
 </table> 
-<%# <hr> %>
-<%# <% @user.questions.each do |question| %> %>
-<%# <%= link_to(question.title, "/questions/#{question.id}") %> %>
-<%# <% end %> %>
+
+ <%= link_to("編集", "/users/#{@user.id}/edit") %>
+
+<hr>
+  <table class="table mt-5 mb-5">
+    <tbody>
+    <h5>あなたの質問</h5>
+    <% @user.question.each do |question| %>
+    <tr><td><%= link_to(question.title, "/questions/#{question.id}") %></td></tr>
+    <% end %>
+    </tbody>
+  </table>

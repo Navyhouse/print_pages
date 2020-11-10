@@ -1,49 +1,49 @@
 <div class="row">
-  <div class="col-8">
+
+  <div class="col-8"> <%# 左側の項目を8/12幅で設定 %>
     <%# bootstrap4でタブを実装 %>
     <ul class="nav nav-tabs">
-      <li class="nav-item">
-        <a class="nav-link active" data-toggle="tab">新着</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" data-toggle="tab">アクティブ</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" data-toggle="tab">未回答</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" data-toggle="tab">未解決</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" data-toggle="tab">注目</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" data-toggle="tab">解決済</a>
-      </li>
+      <li class="nav-item"><a class="nav-link active" data-toggle="tab">新着</a></li>
+      <li class="nav-item"><a class="nav-link" data-toggle="tab">アクティブ</a></li>
+      <li class="nav-item"><a class="nav-link" data-toggle="tab">未回答</a></li>
+      <li class="nav-item"><a class="nav-link" data-toggle="tab">未解決</a></li>
+      <li class="nav-item"><a class="nav-link" data-toggle="tab">注目</a></li>
+      <li class="nav-item"><a class="nav-link" data-toggle="tab">解決済</a></li>
     </ul>
 
     <%# questionハッシュから取り出してリストに表示 %>
     <table class="table mt-6 mb-5">
-      <tbody>
-        <% @search_question.each do |question| %>
+      <%# <tbody> %>
+        <% @question.each do |question| %>
           <tr>
-          <th class="small">回答<%= question.answer.count %></th>
-          <th class><%= link_to question.title, question_path(question) %></th>
-          <td class="small"><%= question.user.name %></td>
-          <%# <td><%= question.created_at.strftime('%Y/%m/%d %H:%M')%>
-          <td class="small"><%= time_ago_in_words(question.created_at)+"前" %></td>
+            <td class="small">回答<%= question.answer.count %></td>
+            <td><%= link_to question.title, question_path(question) %><br>
+            <% question.tag_list.each do |tag| %>
+              <span class="badge badge badge-info"><%= tag %></span>
+            <% end %></td>
+            <td class="small">
+            <%= question.user.name %><br>
+            <%# <td><%= question.created_at.strftime('%Y/%m/%d %H:%M')%>
+            <%= time_ago_in_words(question.created_at)+"前" %>
+            </td>
           </tr>
         <% end %>
-      </tbody>
+      <%# </tbody> %>
     </table>
+
     <%# ページネーションを表示kaminari %>
     <%= paginate @question %>
+
+    <%# 質問するボタンで画面遷移 %>
     <%=link_to("questions/new") do %>
       <button class="btn btn-secondary btn-md" >質問する</button> 
-      <%end%> 
-  </div>
+    <%end%> 
 
-  <div class="col-4">
+  </div> <%# 左側の項目を8/12幅で設定の /div %>
+
+  
+  <div class="col-4"> <%# 右側の項目を4/12幅で設定 %>
+    <%#　「はじめてみましょう」リスト %>
     <div class="card mt-3" style="width: 18rem;">
       <div class="card-header"> はじめてみましょう！</div>
         <ul class="list-group list-group-flush">
@@ -55,6 +55,7 @@
         </ul>
     </div>
 
+    <%# 回答してみませんかリスト %>
     <div class="card mt-3 border-danger" style="width: 18rem;">
       <div class="card-header bg-danger text-white">回答してみませんか？</div>
         <ul class="list-group list-group-flush">
@@ -64,6 +65,7 @@
         </ul>
     </div>
 
+    <%# ユーザーランキングの項目 %>
     <table class="table mt-6 mb-5">
       <tbody>
         <tr><th>ユーザーランキング</th></tr>
@@ -75,6 +77,7 @@
         <% end %>
       </tbody>
     </table>
-  </div>
+  </div> <%# 右側の項目を4/12幅で設定の /div %>
+
 </div>
 
