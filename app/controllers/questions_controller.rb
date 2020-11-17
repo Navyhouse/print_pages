@@ -2,11 +2,15 @@ class QuestionsController < ApplicationController
     before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
     before_action :ensure_correct_user, only: [:edit, :update, :destroy]
     impressionist :actions=> [:show]
+    respond_to :js
 
     def index
         @test = "Welcome PrintPages!!" 
-        @question = Question.page(params[:page])
-        @users= User.all
+        # @question = Question.order(:title).page params[:page]
+        @q = Question.search(params[:q])
+        @question = @q.result(distinct: true).order(created_at: "DESC").page(params[:page]).per(15) 
+        @users= User.order(answer: "DESC")
+        @random = Question.order("RANDOM()").limit(1)
     end
     
     def show
@@ -53,18 +57,9 @@ class QuestionsController < ApplicationController
         redirect_to("/questions")
     end
 
-    def make_resolved
-      @question == Question.find(params[:question_id])
-       if @question.update(is_solved: true)
-         respond_to |format|
-         format.html{render :show}
-         format.js{}
-        end
-     end
-
     private
     def question_params
-      params.require(:question).permit(:title, :body, :image, :tag_list)
+      params.require(:question).permit(:title, :body, :tag_list, :image)
     end
     
     def ensure_correct_user

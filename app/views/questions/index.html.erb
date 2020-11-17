@@ -17,14 +17,16 @@
         <% @question.each do |question| %>
           <tr>
             <td class="small">回答<%= question.answer.count %></td>
-            <td><%= link_to question.title, question_path(question) %><br>
-            <% question.tag_list.each do |tag| %>
-              <span class="badge badge badge-info"><%= tag %></span>
-            <% end %></td>
+            <td class="font-weight-bold">
+              <%= link_to question.title, question_path(question) %><br>
+              <% question.tag_list.each do |tag| %>
+                <span class="badge badge alert-danger text-light"><%= tag %></span>
+              <% end %>
+            </td>
             <td class="small">
-            <%= question.user.name %><br>
-            <%# <td><%= question.created_at.strftime('%Y/%m/%d %H:%M')%>
-            <%= time_ago_in_words(question.created_at)+"前" %>
+              <%= question.user.name %><br>
+              <%# <td><%= question.created_at.strftime('%Y/%m/%d %H:%M')%>
+              <%= time_ago_in_words(question.created_at)+"前" %>
             </td>
           </tr>
         <% end %>
@@ -42,9 +44,9 @@
   </div> <%# 左側の項目を8/12幅で設定の /div %>
 
   
-  <div class="col-4"> <%# 右側の項目を4/12幅で設定 %>
+  <div class="small col-3"> <%#右側の項目を4/12幅で設定%>
     <%#　「はじめてみましょう」リスト %>
-    <div class="card mt-3" style="width: 18rem;">
+    <div class="card mt-3" style="width: rem; ">
       <div class="card-header"> はじめてみましょう！</div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item">PrintPagesへログインする</li>
@@ -56,26 +58,29 @@
     </div>
 
     <%# 回答してみませんかリスト %>
-    <div class="card mt-3 border-danger" style="width: 18rem;">
-      <div class="card-header bg-danger text-white">回答してみませんか？</div>
+    <div class="card mt-3 border-danger" style="width: rem;">
+      <div class="card-header alert-danger">回答してみませんか？</div>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item"></li>
-          <li class="list-group-item"></li>
-          <li class="list-group-item"></li>
+        <li class="list-group-item">
+          <% @random.each do |question| %>
+          <%= link_to question.title, question_path(question) %>
+          <% end %>
+        </li>
         </ul>
     </div>
 
     <%# ユーザーランキングの項目 %>
-    <table class="table mt-6 mb-5">
-      <tbody>
-        <tr><th>ユーザーランキング</th></tr>
-        <% @users.each do |user| %>
+    <table class="table mt-3" style="width: 17rem;">
+      <tr><th>ユーザーランキング</th></tr>
+      <% @users.each do |user| %>
+        <tbody>
           <tr>
             <td><%= user.id %></td>
-            <td><%= user.name %></td>
+            <td><%= link_to user.name, user_path(user) %></td>
+            <td><%= user.answer.count %></td>
           </tr>
-        <% end %>
-      </tbody>
+        </tbody>
+      <% end %>
     </table>
   </div> <%# 右側の項目を4/12幅で設定の /div %>
 

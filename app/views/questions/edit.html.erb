@@ -5,17 +5,18 @@
   </div>
   <div class="form-group">
     <%= f.label :body, "本文" %><br>
-    <%= f.text_area :body, class:"form-control", rows:"5" %>
+    <%= f.rich_text_area :body %>
   </div>
-     <div class="form-group">
+  <div class="form-group">
     <%= f.label :tag_list, "タグをカンマ区切りで入力" %>
     <%= text_field_tag "question[tag_list]", @question.tag_list.join(","), class:"form-control", data: {role: "tagsinput"} %>
   </div>
-  
-  <div class="form-group">
-    <%= f.label :image, "iamge" %><br>
-    <%= f.file_field :image %>
-    <%# <%= f.submit 'アップロードする'%>
-  </div>
+  <%# 画像投稿 %>
+  <%# <div class="form-group"> %>
+  <%# <%= f.label :image, "写真を貼る" %>
+  <%# <%= f.file_field :image %>
+  <%# <%= f.hidden_field :image_cache %>
+  <%# <%= f.submit 'アップロードする'%>
+  <%# </div> %>
   <button type="submit" class="btn btn-dark">更新</button>
 <% end %>
