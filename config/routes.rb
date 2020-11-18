@@ -18,5 +18,9 @@ Rails.application.routes.draw do
     resources :answers, only: [:create]
   end
 
+  resources :answers, only: [:create] do
+    resources :likes, only: [:create, :destroy]
+  end
+
 end
 

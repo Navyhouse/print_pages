@@ -16,5 +16,10 @@
     <% @user.question.each do |question| %>
     <tr><td><%= link_to(question.title, "/questions/#{question.id}") %></td></tr>
     <% end %>
+    <h3>いいねしている投稿</h3> %>
+    <%# <% @user.liked_answer.each do |answer| %> %>
+      <%# <%= answer.user.email %> %>
+      <%# <%= answer.content %> %>
+    <%# <% end %> %>
     </tbody>
   </table>

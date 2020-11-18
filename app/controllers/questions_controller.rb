@@ -17,6 +17,7 @@ class QuestionsController < ApplicationController
         @question = Question.find(params[:id])
         impressionist(@question, nil, unique: [:session_hash])
         @answer = Answer.new
+        @like = Like.new
     end
     
     def new
