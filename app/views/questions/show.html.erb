@@ -17,9 +17,11 @@
       </td></tr>
 
       <tr><td>
-      <% if @question.user_id == current_user.id %>
-      <%= link_to("編集", "/questions/#{@question.id}/edit") %>
-      <%# <%= link_to("削除", "/questions/#{@question.id}", method: :delete, data: {confirm: "本当に削除しますか？"}) %>
+      <% if current_user != nil%>
+        <% if @question.user_id == current_user.id %>
+        <%= link_to("編集", "/questions/#{@question.id}/edit") %>
+        <%# <%= link_to("削除", "/questions/#{@question.id}", method: :delete, data: {confirm: "本当に削除しますか？"}) %>
+        <% end %>
       <% end %>
       </tr></td>
   </tbody>
@@ -44,11 +46,13 @@
         <td><%= answer.body %></td>
         <td><%= answer.user.name %></td>
         <td>高評価:<%= answer.likes.count %>
+        <% if current_user != nil%>
           <% if current_user.already_liked?(answer) %>
-            <%= button_to '− 取消す', answer_likes_path(answer), method: :delete %>
+            <%= button_to '− 取消す', answer_likes_path(answer), class: "btn btn-outline-primary btn-sm", method: :delete %>
           <% else %>
-            <%= button_to '＋ 高評価', answer_likes_path(answer) %>
+            <%= button_to '＋ 高評価', answer_likes_path(answer), class: "btn btn-outline-danger btn-sm" %>
           <% end %>
+        <% end %>
          </td>
         </tr>
     <% end %>
