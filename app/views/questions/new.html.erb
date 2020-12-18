@@ -20,11 +20,5 @@
     <%= f.label :tag_list, "タグをカンマ区切りで入力" %>
     <%= text_field_tag "question[tag_list]", @question.tag_list.join(","), class:"form-control", data: {role: "tagsinput"} %>
   </div>
-  <%# <div class="form-group"> %>
-  <%# <%= f.label :image, "写真を貼る" %>
-  <%# <%= f.file_field :image %>
-  <%# <%= f.hidden_field :image_cache %>
-  <%# <%= f.submit 'アップロードする'%>
-  <%# </div> %>
   <button type="submit" class="btn btn-dark">質問する</button>
 <% end %>

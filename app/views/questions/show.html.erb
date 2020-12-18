@@ -9,7 +9,6 @@
       
       </tr>
       <tr><td><%= @question.body %></td></tr>
-      <%# <tr><td><%= image_tag @question.image_url if @question.image?</td></tr> %>
       <tr><td>
         <% @question.tag_list.each do |tag| %>
           <span class="badge badge badge-info"><%= tag %></span>
@@ -20,7 +19,7 @@
       <% if current_user != nil%>
         <% if @question.user_id == current_user.id %>
         <%= link_to("編集", "/questions/#{@question.id}/edit") %>
-        <%# <%= link_to("削除", "/questions/#{@question.id}", method: :delete, data: {confirm: "本当に削除しますか？"}) %>
+        <%= link_to("削除", "/questions/#{@question.id}", method: :delete, data: {confirm: "本当に削除しますか？"})
         <% end %>
       <% end %>
       </tr></td>

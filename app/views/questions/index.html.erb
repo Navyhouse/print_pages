@@ -13,7 +13,7 @@
 
     <%# questionハッシュから取り出してリストに表示 %>
     <table class="table mt-6 mb-5">
-      <%# <tbody> %>
+      <tbody>
         <% @question.each do |question| %>
           <tr>
             <td class="small">回答<%= question.answer.count %></td>
@@ -30,7 +30,7 @@
             </td>
           </tr>
         <% end %>
-      <%# </tbody> %>
+      </tbody>
     </table>
 
     <%# ページネーションを表示kaminari %>
