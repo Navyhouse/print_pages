@@ -308,8 +308,8 @@ Devise.setup do |config|
   # When set to false, does not sign a user in automatically after their password is
   # changed. Defaults to true, so a user is signed in automatically after changing a password.
   # config.sign_in_after_change_password = true
-  # 1ヶ月と指定
+  # passwordの保存期限を1ヶ月と指定
   config.timeout_in = 1.month
- # Gmailアドレスを設定する
+  # Gmailアドレスを設定する
   config.mailer_sender = "kjo0902.biz@gmail.com"
 end
