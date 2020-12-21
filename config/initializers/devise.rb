@@ -310,6 +310,6 @@ Devise.setup do |config|
   # config.sign_in_after_change_password = true
   # 1ヶ月と指定
   config.timeout_in = 1.month
-
-  config.mailer_sender = 'kjo0902.biz@gmail.com'
+ # Gmailアドレスを設定する
+  config.mailer_sender = "kjo0902.biz@gmail.com"
 end
