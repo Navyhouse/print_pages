@@ -16,11 +16,9 @@
       </td></tr>
 
       <tr><td>
-      <% if current_user != nil%>
-        <% if @question.user_id == current_user.id %>
+      <% if current_user != nil && @question.user_id == current_user.id %>
         <%= link_to("編集", "/questions/#{@question.id}/edit") %>
-        <%= link_to("削除", "/questions/#{@question.id}", method: :delete, data: {confirm: "本当に削除しますか？"})
-        <% end %>
+        <%= link_to("削除", "/questions/#{@question.id}", method: :delete, data: {confirm: "本当に削除しますか？"}) %>
       <% end %>
       </tr></td>
   </tbody>
