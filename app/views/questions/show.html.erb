@@ -1,3 +1,4 @@
+<div class="container">
 <table class="table mt-5 mb-5">
   <tbody>
       <tr class="p-4 bg-light text-dark">
@@ -45,7 +46,7 @@
         <td>高評価:<%= answer.likes.count %>
         <% if current_user != nil%>
           <% if current_user.already_liked?(answer) %>
-            <%= button_to '− 取消す', answer_likes_path(answer), class: "btn btn-outline-primary btn-sm", method: :delete %>
+            <%= button_to '− 取消す', answer_like_path(answer), class: "btn btn-outline-primary btn-sm", method: :delete %>
           <% else %>
             <%= button_to '＋ 高評価', answer_likes_path(answer), class: "btn btn-outline-danger btn-sm" %>
           <% end %>
@@ -55,3 +56,4 @@
     <% end %>
   </tbody>
 </table> 
+</div>

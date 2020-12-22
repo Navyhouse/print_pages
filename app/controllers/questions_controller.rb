@@ -25,15 +25,15 @@ class QuestionsController < ApplicationController
     end
 
     def create
-      @question = Question.new(question_params)
-      @question.user_id = current_user.id
-      if @question.save
-        flash[:notice] = "質問は投稿されました。回答が届くまでお待ちください。"
-        redirect_to("/questions/new")
-      else
-        flash.now[:alert] = "error！内容確認して再度投稿してください。"
-        render("questions/new")
-      end
+        @question = Question.new(question_params)
+        @question.user_id = current_user.id
+        if @question.save
+          flash[:notice] = "質問は投稿されました。回答が届くまでお待ちください。"
+          redirect_to("/questions/new")
+        else
+          flash.now[:alert] = "error！内容確認して再度投稿してください。"
+           render("questions/new")
+        end
     end
 
     def edit
@@ -58,7 +58,7 @@ class QuestionsController < ApplicationController
         redirect_to("/questions")
     end
 
-    private
+  private
     def question_params
       params.require(:question).permit(:title, :body, :tag_list, :image)
     end

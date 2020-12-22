@@ -1,15 +1,15 @@
 <%= form_with(model: @question, local: true) do |f| %>
   <div class="form-group">
-    <%= f.label :title, "タイトル" %><br>
+    <%= f.label :title, "質問タイトル" %><br>
     <%= f.text_field :title, class:"form-control" %>
   </div>
   <div class="form-group">
-    <%= f.label :body, "本文" %><br>
+    <%= f.label :body, "質問本文" %><br>
     <%= f.rich_text_area :body %>
   </div>
   <div class="form-group">
     <%= f.label :tag_list, "タグをカンマ区切りで入力" %>
     <%= text_field_tag "question[tag_list]", @question.tag_list.join(","), class:"form-control", data: {role: "tagsinput"} %>
   </div>
-  <button type="submit" class="btn btn-dark">更新</button>
+  <button type="submit" class="btn btn-dark">更新する</button>
 <% end %>
