@@ -64,13 +64,13 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   # default url
-  config.action_mailer.default_url_options = {  host: 'localhost', port: 3000 }
+  config.action_mailer.default_url_options =　{ :host => 'http://printpages.herokuapp.com' }
   # mail setting
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     :address => "smtp.gmail.com",
-    :port => 5000,
+    :port => 587,
     :user_name => "kjo0902.biz@gmail.com",
     :password => "kbrktpqoaegdsufp",
     :authentication => :plain,
