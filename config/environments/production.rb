@@ -117,8 +117,8 @@ Rails.application.configure do
     enable_starttls_auto: true,
     port:                 587,
     domain:               'gmail.com',
-    user_name:            'kjo0902.biz@gmail.com',
-    password:             'kbrktpqoaegdsufp',
+    user_name:           ENV['USERNAME'],
+    password:            ENV['PASSWORD'],
     authentication:       :plain
   }
   config.action_mailer.default_url_options = { protocol: 'https',host:'printpages.herokuapp.com'}

@@ -100,6 +100,10 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    dotenv (2.7.6)
+    dotenv-rails (2.7.6)
+      dotenv (= 2.7.6)
+      railties (>= 3.2)
     dry-configurable (0.11.6)
       concurrent-ruby (~> 1.0)
       dry-core (~> 0.4, >= 0.4.7)
@@ -325,6 +329,7 @@ DEPENDENCIES
   carrierwave
   config
   devise
+  dotenv-rails
   image_processing (~> 1.2)
   impressionist
   jbuilder (~> 2.7)
