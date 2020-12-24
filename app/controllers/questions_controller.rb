@@ -6,7 +6,7 @@ class QuestionsController < ApplicationController
 
     def index
         @test = "Welcome PrintPages!!" 
-        @question = Question.order(:title).page params[:page]
+        # @question = Question.order(:title).page params[:page]
         @q = Question.search(params[:q])
         @question = @q.result(distinct: true).order(created_at: "DESC").page(params[:page]).per(15) 
         @users= User.all
