@@ -1,89 +1,187 @@
-<div class="container">
-<div class="row">
+  <div class="container">
+  <div class="row">
 
-  <div class="col-xs-12 col-lg-8"> <%# 左側の項目を8/12幅で設定 %>
-    <%# bootstrap4でタブを実装 %>
-    <ul class="nav nav-tabs">
-      <li class="nav-item"><a class="nav-link active" data-toggle="tab">新着</a></li>
-      <li class="nav-item"><a class="nav-link" data-toggle="tab">アクティブ</a></li>
-      <li class="nav-item"><a class="nav-link" data-toggle="tab">未回答</a></li>
-      <li class="nav-item"><a class="nav-link" data-toggle="tab">未解決</a></li>
-      <li class="nav-item"><a class="nav-link" data-toggle="tab">注目</a></li>
-      <li class="nav-item"><a class="nav-link" data-toggle="tab">解決済</a></li>
-    </ul>
-
-    <%# questionハッシュから取り出してリストに表示 %>
-    <table class="table mt-6 mb-5">
-      <tbody>
-        <% @question.each do |question| %>
-          <tr>
-            <td class="small">回答<%= question.answer.count %></td>
-            <td class="font-weight-bold">
-              <%= link_to question.title, question_path(question) %><br>
-              <% question.tag_list.each do |tag| %>
-                <small><span class="badge badge badge-secondary"><%= tag %></span></small>
-              <% end %>
-            </td>
-            <td class="small">
-              <%= question.user.name %><br>
-              <%# <td><%= question.created_at.strftime('%Y/%m/%d %H:%M')%>
-              <%= time_ago_in_words(question.created_at)+"前" %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-
-    <%# ページネーションを表示kaminari %>
-    <%= paginate @question %>
-
-    <%# 質問するボタンで画面遷移 %>
-    <%=link_to("questions/new") do %>
-      <button class="btn btn-secondary btn-md" >質問する</button> 
-    <%end%> 
-
-  </div> <%# 左側の項目を8/12幅で設定の /div %>
-
+    <div class="col-xs-12 col-lg-8"> <%# 左側の項目をPC8/12 スマホ12/12幅で設定 %>
+      <%# bootstrap4でタブを実装 %>
+  <nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <a class="nav-item nav-link active" id="nav-new-tab" data-toggle="tab" href="#nav-new" role="tab" aria-controls="nav-new" aria-selected="true">新着</a>
+      <a class="nav-item nav-link" id="nav-active-tab" data-toggle="tab" href="#nav-active" role="tab" aria-controls="nav-active" aria-selected="false">アクティブ</a>
+      <a class="nav-item nav-link" id="nav-unanswerd-tab" data-toggle="tab" href="#nav-unanswerd" role="tab" aria-controls="nav-unanswerd" aria-selected="false">未回答</a>      
+      <a class="nav-item nav-link" id="nav-unsolved-tab" data-toggle="tab" href="#nav-unsolved" role="tab" aria-controls="nav-unsolved" aria-selected="false">未解決</a>
+      <a class="nav-item nav-link" id="nav-solved-tab" data-toggle="tab" href="#nav-solved" role="tab" aria-controls="nav-unsolved" aria-selected="false">解決済</a>
+    </div>
+  </nav>
   
-  <div class="small hidden-xs col-lg-3"> <%#右側の項目を4/12幅で設定%>
-    <%#　「はじめてみましょう」リスト %>
-    <div class="card mt-3" style="width: rem; ">
-      <div class="card-header"> はじめてみましょう！</div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">PrintPagesへログインする</li>
-          <li class="list-group-item">PrintPagesの簡単な説明を読む</li>
-          <li class="list-group-item">５つのMYタグを登録する</li>
-          <li class="list-group-item">３つの回答へ高評価（＋）をする</li>
-          <li class="list-group-item">回答または質問を投稿する</li>
-        </ul>
-    </div>
-
-    <%# 回答してみませんかリスト %>
-    <div class="card mt-3 border-danger" style="width: rem;">
-      <div class="card-header alert-danger">回答してみませんか？</div>
-        <ul class="list-group list-group-flush">
-        <li class="list-group-item">
-          <% @random.each do |question| %>
-          <%= link_to question.title, question_path(question) %>
-          <% end %>
-        </li>
-        </ul>
-    </div>
-
-    <%# ユーザーランキングの項目 %>
-    <table class="table mt-3" style="width: 17rem;">
-      <tr><th>ユーザーランキング</th></tr>
-      <% @users.each do |user| %>
+  <div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="nav-new" role="tabpanel" aria-labelledby="nav-new-tab">
+        <%# questionハッシュから取り出してリストに表示 %>
+      <table class="table mt-6 mb-5">
         <tbody>
-          <tr>
-            <td><%= user.id %></td>
-            <td><%= link_to user.name, user_path(user) %></td>
-          </tr>
+          <% @question.each do |question| %>
+            <tr>
+              <td class="small">回答<%= question.answer.count %></td>
+              <td class="font-weight-bold">
+                <%= link_to question.title, question_path(question) %><br>
+                <% question.tag_list.each do |tag| %>
+                  <small><span class="badge badge badge-secondary"><%= tag %></span></small>
+                <% end %>
+              </td>
+              <td class="small">
+                <%= question.user.name %><br>
+                <%# <td><%= question.created_at.strftime('%Y/%m/%d %H:%M')%>
+                <%= time_ago_in_words(question.created_at)+"前" %>
+              </td>
+            </tr>
+          <% end %>
         </tbody>
-      <% end %>
-    </table>
-  </div> <%# 右側の項目を4/12幅で設定の /div %>
+      </table>
+    </div>
 
-</div>
-</div>
+    <div class="tab-pane fade" id="nav-active" role="tabpanel" aria-labelledby="nav-active-tab">
+        <table class="table mt-6 mb-5">
+        <tbody>
+          <% @questiontwo.each do |question| %>
+            <tr>
+              <td class="small">回答<%= question.answer.count %></td>
+              <td class="font-weight-bold">
+                <%= link_to question.title, question_path(question) %><br>
+                <% question.tag_list.each do |tag| %>
+                  <small><span class="badge badge badge-secondary"><%= tag %></span></small>
+                <% end %>
+              </td>
+              <td class="small">
+                <%= question.user.name %><br>
+                <%# <td><%= question.created_at.strftime('%Y/%m/%d %H:%M')%>
+                <%= time_ago_in_words(question.created_at)+"前" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+   <div class="tab-pane fade" id="nav-unanswerd" role="tabpanel" aria-labelledby="nav-unanswerd-tab">
+        <table class="table mt-6 mb-5">
+        <tbody>
+          <% @question.each do |question| %>
+            <tr>
+              <td class="small">まだ回答がないよ<%= question.answer.count %></td>
+              <td class="font-weight-bold">
+                <%= link_to question.title, question_path(question) %><br>
+                <% question.tag_list.each do |tag| %>
+                  <small><span class="badge badge badge-secondary"><%= tag %></span></small>
+                <% end %>
+              </td>
+              <td class="small">
+                <%= question.user.name %><br>
+                <%# <td><%= question.created_at.strftime('%Y/%m/%d %H:%M')%>
+                <%= time_ago_in_words(question.created_at)+"前" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="tab-pane fade" id="nav-unsolved" role="tabpanel" aria-labelledby="nav-unsolved-tab">
+          <table class="table mt-6 mb-5">
+        <tbody>
+          <% @question.each do |question| %>
+            <tr>
+              <td class="small">まだ解決してないよ<%= question.answer.count %></td>
+              <td class="font-weight-bold">
+                <%= link_to question.title, question_path(question) %><br>
+                <% question.tag_list.each do |tag| %>
+                  <small><span class="badge badge badge-secondary"><%= tag %></span></small>
+                <% end %>
+              </td>
+              <td class="small">
+                <%= question.user.name %><br>
+                <%# <td><%= question.created_at.strftime('%Y/%m/%d %H:%M')%>
+                <%= time_ago_in_words(question.created_at)+"前" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="tab-pane fade" id="nav-solved" role="tabpanel" aria-labelledby="nav-solved-tab">
+          <table class="table mt-6 mb-5">
+        <tbody>
+          <% @question.each do |question| %>
+            <tr>
+              <td class="small">解決したよ<%= question.answer.count %></td>
+              <td class="font-weight-bold">
+                <%= link_to question.title, question_path(question) %><br>
+                <% question.tag_list.each do |tag| %>
+                  <small><span class="badge badge badge-secondary"><%= tag %></span></small>
+                <% end %>
+              </td>
+              <td class="small">
+                <%= question.user.name %><br>
+                <%# <td><%= question.created_at.strftime('%Y/%m/%d %H:%M')%>
+                <%= time_ago_in_words(question.created_at)+"前" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+      <%# ページネーションを表示kaminari %>
+      <%= paginate @question %>
+
+      <%# 質問するボタンで画面遷移 %>
+      <%=link_to("questions/new") do %>
+        <button class="btn btn-secondary btn-md" >質問する</button> 
+      <%end%> 
+
+    </div> <%# 左側の項目を8/12幅で設定の /div %>
+
+    
+    <div class="small d-none d-sm-block col-lg-3"> <%#右側の項目を4/12幅で設定%>
+      <%#　「はじめてみましょう」リスト %>
+      <div class="card mt-3" style="width: rem; ">
+        <div class="card-header"> はじめてみましょう！</div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">PrintPagesへログインする</li>
+            <li class="list-group-item">PrintPagesの簡単な説明を読む</li>
+            <li class="list-group-item">５つのMYタグを登録する</li>
+            <li class="list-group-item">３つの回答へ高評価（＋）をする</li>
+            <li class="list-group-item">回答または質問を投稿する</li>
+          </ul>
+      </div>
+
+      <%# 回答してみませんかリスト %>
+      <div class="card mt-3 border-danger" style="width: rem;">
+        <div class="card-header alert-danger">回答してみませんか？</div>
+          <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <% @random.each do |question| %>
+            <%= link_to question.title, question_path(question) %>
+            <% end %>
+          </li>
+          </ul>
+      </div>
+
+      <%# ユーザーランキングの項目 %>
+      <table class="table mt-3" style="width: 17rem;">
+        <tr><th>ユーザーランキング</th></tr>
+        <% @users.each do |user| %>
+          <tbody>
+            <tr>
+              <td><%= user.id %></td>
+              <td><%= link_to user.name, user_path(user) %></td>
+            </tr>
+          </tbody>
+        <% end %>
+      </table>
+    </div> <%# 右側の項目を4/12幅で設定の /div %>
+
+  </div>
+  </div>
 
