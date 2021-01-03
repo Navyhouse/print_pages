@@ -41,9 +41,9 @@
     <div class="tab-pane fade" id="nav-active" role="tabpanel" aria-labelledby="nav-active-tab">
         <table class="table mt-6 mb-5">
         <tbody>
-          <% @questiontwo.each do |question| %>
+          <% @question.each do |question| %>
             <tr>
-              <td class="small">回答<%= question.answer.count %></td>
+              <td class="small">active<%= question.answer.count %></td>
               <td class="font-weight-bold">
                 <%= link_to question.title, question_path(question) %><br>
                 <% question.tag_list.each do |tag| %>
