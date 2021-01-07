@@ -143,9 +143,9 @@
     </div> <%# 左側の項目を8/12幅で設定の /div %>
 
     
-    <div class="small d-none d-xs-block col-lg-3"> <%#右側の項目を4/12幅で設定%>
+    <div class="d-none d-sm-block col-lg-3"> <%#右側の項目を4/12幅で設定%>
       <%#　「はじめてみましょう」リスト %>
-      <div class="card mt-3" style="width: rem; ">
+      <div class="small card mt-3" style="width: rem; ">
         <div class="card-header"> はじめてみましょう！</div>
           <ul class="list-group list-group-flush">
             <li class="list-group-item">PrintPagesへログインする</li>
@@ -157,7 +157,7 @@
       </div>
 
       <%# 回答してみませんかリスト %>
-      <div class="card mt-3 border-danger" style="width: rem;">
+      <div class="small card mt-3 border-danger" style="width: rem;">
         <div class="card-header alert-danger">回答してみませんか？</div>
           <ul class="list-group list-group-flush">
           <li class="list-group-item">
@@ -169,7 +169,7 @@
       </div>
 
       <%# ユーザーランキングの項目 %>
-      <table class="table mt-3" style="width: 17rem;">
+      <table class="small table mt-3" style="width: 17rem;">
         <tr><th>ユーザーランキング</th></tr>
         <% @users.each do |user| %>
           <tbody>
