@@ -42,10 +42,13 @@
       </li>
     <% else %>
        <li class="nav-item">
-        <span class="material-icons">login</span>
-        <%= link_to("ログイン", "/users/sign_in", class: "nav-link") %>
+        <%= link_to "/users/sign_in", class: "nav-link" do%>
+        <span class="material-icons">login</span>ログイン
+        <%end%>
         <li class="nav-item">
-        <%= link_to("新規登録", "/users/sign_up", class: "nav-link") %>
+        <%= link_to "/users/sign_up", class: "nav-link" do%>
+        <span class="material-icons">create</span>新規登録
+        <%end%>
       </li>
     <% end %>
 
