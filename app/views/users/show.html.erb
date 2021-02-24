@@ -1,21 +1,42 @@
 <div class="container">
-  <h2>ユーザー情報</h2>
-    <table class="table mt-5 mb-5">
-      <tbody>
-        <tr><td>ユーザーネーム：<%= @user.name %></td></tr>
-        <tr><td><%= link_to("編集", "/users/#{@user.id}/edit") %></td></tr>
-      </tbody>
-    </table> 
+<div class="row">
 
-  
+  <div class="col">
+    <div class="card border-info mb-3">
+     <div class="card-header">ユーザー情報</div>
+       <div class="card-body">
+         <p class="card-text">ユーザーネーム：<%= @user.name %></p>
+         <p><%= link_to("編集", "/users/#{@user.id}/edit") %></p>
+       </div>
+   </div>
 
-  <table class="table mt-5 mb-5">
-  <h5>あなたの質問</h5>
-    <tbody>
-      
-        <% @user.question.each do |question| %>
-        <tr><td><%= link_to(question.title, "/questions/#{question.id}") %></td></tr>
-        <% end %>
-    </tbody>
-  </table>
+    <div class="card border-info mb-3">
+      <div class="card-header">あなたの質問</div>
+       <div class="card-body">
+         <ul class="list-group list-group-flush">
+           <% @user.question.each do |question| %>
+             <li class="list-group-item"><%= link_to(question.title, "/questions/#{question.id}") %></li>
+           <% end %>
+         </ul>
+       </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="card border-info mb-3">
+      <div class="card-header">新着情報</div>
+      <div class="card-body">
+        <p class="card-text">ここに新着情報が入ります</p>
+      </div>
+    </div>
+
+    <div class="card border-info mb-3">
+      <div class="card-header">ここはフリースペース</div>
+      <div class="card-body">
+        <p class="card-text">comeing soon,</p>
+      </div>
+    </div>
+  </div>
+
+</div>
 </div>

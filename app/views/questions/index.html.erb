@@ -1,9 +1,18 @@
+<div class="card bg-dark text-white">
+  <img src="/assets/woodtype-846089_1920.jpg" class="card-img" alt="...">
+  <div class="card-img-overlay">
+    <h1 class="card-title text-center">Print Pages</h1>
+    <p class="card-text text-center">価値ある知識を引き出し合う</p>
+    <p class="card-text text-center">PrintPagesには、印刷に関する質問と回答を通して<br>引き出される価値ある知識が集まっています。</p>    
+  </div>
+</div>
+
   <div class="container">
   <div class="row">
 
     <div class="col-xs-12 col-lg-8"> <%# 左側の項目をPC8/12 スマホ12/12幅で設定 %>
       <%# bootstrap4でタブを実装 %>
-  <nav>
+   <nav>
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
       <a class="nav-item nav-link active" id="nav-new-tab" data-toggle="tab" href="#nav-new" role="tab" aria-controls="nav-new" aria-selected="true">新着</a>
       <a class="nav-item nav-link" id="nav-active-tab" data-toggle="tab" href="#nav-active" role="tab" aria-controls="nav-active" aria-selected="false">アクティブ</a>
@@ -17,7 +26,6 @@
     <div class="tab-pane fade show active" id="nav-new" role="tabpanel" aria-labelledby="nav-new-tab">
         <%# questionハッシュから取り出してリストに表示 %>
       <table class="table mt-6 mb-5">
-        <tbody>
           <% @question.each do |question| %>
             <tr>
               <td class="small">回答<%= question.answer.count %></td>
@@ -34,13 +42,11 @@
               </td>
             </tr>
           <% end %>
-        </tbody>
       </table>
     </div>
 
     <div class="tab-pane fade" id="nav-active" role="tabpanel" aria-labelledby="nav-active-tab">
         <table class="table mt-6 mb-5">
-        <tbody>
           <% @question.each do |question| %>
             <tr>
               <td class="small">active<%= question.answer.count %></td>
@@ -57,13 +63,11 @@
               </td>
             </tr>
           <% end %>
-        </tbody>
       </table>
     </div>
 
    <div class="tab-pane fade" id="nav-unanswerd" role="tabpanel" aria-labelledby="nav-unanswerd-tab">
         <table class="table mt-6 mb-5">
-        <tbody>
           <% @question.each do |question| %>
             <tr>
               <td class="small">まだ回答がないよ<%= question.answer.count %></td>
@@ -80,13 +84,11 @@
               </td>
             </tr>
           <% end %>
-        </tbody>
       </table>
     </div>
 
     <div class="tab-pane fade" id="nav-unsolved" role="tabpanel" aria-labelledby="nav-unsolved-tab">
           <table class="table mt-6 mb-5">
-        <tbody>
           <% @question.each do |question| %>
             <tr>
               <td class="small">まだ解決してないよ<%= question.answer.count %></td>
@@ -103,13 +105,11 @@
               </td>
             </tr>
           <% end %>
-        </tbody>
       </table>
     </div>
 
     <div class="tab-pane fade" id="nav-solved" role="tabpanel" aria-labelledby="nav-solved-tab">
           <table class="table mt-6 mb-5">
-        <tbody>
           <% @question.each do |question| %>
             <tr>
               <td class="small">解決したよ<%= question.answer.count %></td>
@@ -126,7 +126,6 @@
               </td>
             </tr>
           <% end %>
-        </tbody>
       </table>
     </div>
 
@@ -172,12 +171,10 @@
       <table class="small table mt-3" style="width: 17rem;">
         <tr><th>ユーザーランキング</th></tr>
         <% @users.each do |user| %>
-          <tbody>
             <tr>
               <td><%= user.id %></td>
               <td><%= link_to user.name, user_path(user) %></td>
             </tr>
-          </tbody>
         <% end %>
       </table>
     </div> <%# 右側の項目を4/12幅で設定の /div %>

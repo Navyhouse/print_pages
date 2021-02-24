@@ -1,4 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3 ">
+<div class="container">
   <img src="/assets/machine_printer_offset_insatsu.png" width="30" height="30" class="d-inline-block align-top" alt="">
   <%= link_to("PrintPages", "/", class:"navbar-brand") %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -8,21 +9,26 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/"><span class="material-icons">house</span>Home<span class="sr-only">(current)</span></a>
       </li>
 
     <% if user_signed_in? %>
       <li class="nav-item">
-        <%= link_to("質問する", "/questions/new", class: "nav-link") %>
+   
+        <%= link_to "/questions/new", class: "nav-link" do %>
+             <span class="material-icons">live_help</span>質問する
+        <%end%>
       </li>
-        <li class="nav-item">
-        <%= link_to("ログアウト", "/users/sign_out", method: :delete, data: {confirm: "本当にログアウトしますか？"}, class: "nav-link") %>
+      <li class="nav-item">
+        <%= link_to "/users/sign_out", method: :delete, data: {confirm: "本当にログアウトしますか？"}, class: "nav-link" do%>
+        <span class="material-icons">logout</span>ログアウト
+        <%end%>
       </li>
 
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <img src="/assets/teacher.png" width="30" height="30" class="d-inline-block align-top" alt="">
-    <%= current_user.name %>
+          <%= current_user.name %>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="/users/<%= current_user.id %>">ユーザー情報</a>
@@ -36,6 +42,7 @@
       </li>
     <% else %>
        <li class="nav-item">
+        <span class="material-icons">login</span>
         <%= link_to("ログイン", "/users/sign_in", class: "nav-link") %>
         <li class="nav-item">
         <%= link_to("新規登録", "/users/sign_up", class: "nav-link") %>
@@ -44,11 +51,12 @@
 
     <form class="form-inline my-2 my-lg-1">
       <%= search_form_for @q do |f| %>
-        <%= f.search_field :title_cont ,placeholder: 'キーワードで検索', class:"form-control form-control-sm" %>
-        <%= f.submit ("検索"), class: 'btn btn-outline-primary btn-sm type="submit"' %>
+          <%= f.search_field :title_cont ,placeholder: 'キーワードで検索', class:"form-control form-control-sm" %>
+         <%= f.submit ("検索"), class: 'btn btn-outline-primary btn-sm type="submit"' %>
       <% end %>
     </form>
 
     </ul>
+  </div>
   </div>
 </nav>

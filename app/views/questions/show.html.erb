@@ -1,20 +1,31 @@
+<div class="card bg-dark text-white">
+  <img src="/assets/woodtype-846089_1920.jpg" class="card-img" alt="...">
+  <div class="card-img-overlay">
+    <h2 class="card-title">質問することでしか得られない、回答やアドバイスがある。</h2>
+    <p class="card-text">30分調べてもわからないことは質問しよう。</p>
+  </div>
+</div>
+
 <div class="container">
 <table class="table mt-5 mb-5">
   <tbody>
       <tr class="p-4 bg-light text-dark">
-      <td><%= @question.title %></td>
-      <td>投稿: <%= @question.created_at.strftime('%Y/%m/%d %H:%M') %></td>
-      <td><%= @question.user.name %></td>
-      <td>回答：<%= @question.answer.count %>件</td>
-      <td>View: <%= @question.impressionist_count %></td>
-      
+       <td><%= @question.title %></td>
+       <td>投稿: <%= @question.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+       <td><%= @question.user.name %></td>
+       <td>回答：<%= @question.answer.count %>件</td>
+       <td>View: <%= @question.impressionist_count %></td>
       </tr>
-      <tr><td><%= @question.body %></td></tr>
-      <tr><td>
+      <tr>
+        <td colspan="5"><%= @question.body %></td>
+      </tr>
+      <tr>
+        <td colspan="5">
         <% @question.tag_list.each do |tag| %>
           <span class="badge badge badge-info"><%= tag %></span>
         <% end %>
-      </td></tr>
+        </td>
+      </tr>
 
       <tr><td>
       <% if current_user != nil && @question.user_id == current_user.id %>

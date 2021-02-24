@@ -1,4 +1,10 @@
 <div class="container">
+    <div class="alert alert-success" role="alert">
+    <p><%= notice%></p>
+    </div>
+    <div class="alert alert-danger" role="alert">
+    <p><%= alert %></p>
+    </div>
 
     <h4>質問する</h4>
     <div class="p-3 mb-2 bg-light text-dark">
@@ -20,6 +26,14 @@
       <div class="form-group">
         <%= f.label :tag_list, "タグをカンマ区切りで入力" %>
         <%= text_field_tag "question[tag_list]", @question.tag_list.join(","), class:"form-control", data: {role: "tagsinput"} %>
+      </div>
+      <div>
+        <select class="form-select" aria-label="Default select example">
+          <option selected>Open this select menu</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
       </div>
       <button type="submit" class="btn btn-dark">質問する</button>
     <% end %>

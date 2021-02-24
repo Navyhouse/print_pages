@@ -1,3 +1,4 @@
+<div class="container">
 <%= form_with(model: @question, local: true) do |f| %>
   <div class="form-group">
     <%= f.label :title, "質問タイトル" %><br>
@@ -13,3 +14,4 @@
   </div>
   <button type="submit" class="btn btn-dark">更新する</button>
 <% end %>
+</div>
