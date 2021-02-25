@@ -1,8 +1,8 @@
-<div class="card bg-dark text-white">
-  <img src="/assets/woodtype-846089_1920.jpg" class="card-img" alt="...">
+<div class="card bg-dark">
+  <img src="/assets/cmyk-2768200_1920.jpg" class="card-img" alt="...">
   <div class="card-img-overlay">
-    <h2 class="card-title">質問することでしか得られない、回答やアドバイスがある。</h2>
-    <p class="card-text">30分調べてもわからないことは質問しよう。</p>
+    <h3 class="card-title text-center">質問することでしか得られない回答やアドバイスがある。</h3>
+    <p class="card-text text-center">30分調べてもわからないことは質問しよう。</p>
   </div>
 </div>
 
@@ -40,7 +40,7 @@
    <%= form_with(model: [@question, @answer], local: true) do |f| %>
     <div class="form-group">
       <%= f.label :body, "あなたの回答" %><br>
-      <%= f.text_area :body, class:"form-control" ,placeholder: '回答を入力してください。'  %>
+      <%= f.rich_text_area :body, class:"form-control" ,placeholder: '回答を入力してください。'  %>
     </div>
     <button type="submit" class="btn btn-secondary btn-lgy">回答する</button>
   <% end %>
