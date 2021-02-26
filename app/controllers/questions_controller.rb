@@ -30,7 +30,7 @@ class QuestionsController < ApplicationController
           flash[:notice] = "質問は投稿されました。回答が届くまでお待ちください。"
           redirect_to("/questions/new")
         else
-          flash.now[:alert] = "error！内容確認して再度投稿してください。"
+          flash.now[:alert] = "エラー！内容確認して再度投稿してください。"
            render("questions/new")
         end
     end

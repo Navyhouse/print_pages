@@ -7,64 +7,55 @@
 </div>
 
 <div class="container">
-<table class="table mt-5 mb-5">
-  <tbody>
-      <tr class="p-4 bg-light text-dark">
-       <td class="font-weight-bold"><%= @question.title %></td>
-       <td>投稿: <%= @question.created_at.strftime('%Y/%m/%d %H:%M') %></td>
-       <td><%= @question.user.name %></td>
-       <td>回答：<%= @question.answer.count %>件</td>
-       <td>View: <%= @question.impressionist_count %></td>
-      </tr>
-      <tr>
-        <td colspan="5"><%= @question.body %></td>
-      </tr>
-      <tr>
-        <td colspan="5">
-        <% @question.tag_list.each do |tag| %>
-          <span class="badge badge badge-info"><%= tag %></span>
-        <% end %>
-        </td>
-      </tr>
-
-      <tr><td>
-      <% if current_user != nil && @question.user_id == current_user.id %>
-        <%= link_to("編集", "/questions/#{@question.id}/edit") %><br/>
-        <%= link_to("削除", "/questions/#{@question.id}", method: :delete, data: {confirm: "本当に削除しますか？"}) %>
-      <% end %>
-      </tr></td>
-  </tbody>
-</table> 
-
-<div class="form-group">
-   <%= form_with(model: [@question, @answer], local: true) do |f| %>
-    <div class="form-group">
-      <%= f.label :body, "あなたの回答" %><br>
-      <%= f.rich_text_area :body, class:"form-control" ,placeholder: '回答を入力してください。'  %>
-    </div>
-    <button type="submit" class="btn btn-secondary btn-lgy">回答する</button>
-  <% end %>
-</div>
-<hr>
-
-<table class="table mt-5 mb-5">
-  <tbody>
-    <h5>【みんなの回答】</h5>
-     <% @question.answer.each do |answer| %>
-       <tr>
-        <td><%= answer.body %></td>
-        <td><%= answer.user.name %></td>
-        <td>高評価:<%= answer.likes.count %>
-        <% if current_user != nil%>
-          <% if current_user.already_liked?(answer) %>
-            <%= button_to '− 取消す', answer_like_path(answer), class: "btn btn-outline-primary btn-sm", method: :delete %>
-          <% else %>
-            <%= button_to '＋ 高評価', answer_likes_path(answer), class: "btn btn-outline-danger btn-sm" %>
-          <% end %>
-        <% end %>
-         </td>
+  <table class="table mt-5 mb-5">
+    <tbody>
+        <tr class="p-4 bg-light text-dark">
+          <td class="font-weight-bold lead"><%= @question.title %></td>
+          <td class="small">投稿　<%= @question.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+          <td class="small"><%= @question.user.name %></td>
+          <td class="small">回答　<%= @question.answer.count %>件</td>
+          <td class="small">View　<%= @question.impressionist_count %></td>
         </tr>
+        <tr><td colspan="5"><%= @question.body %></td></tr>
+        <tr><td colspan="5">
+          <% @question.tag_list.each do |tag| %>
+            <span class="badge badge badge-info"><%= tag %></span>
+          <% end %>
+          </td></tr>
+        <tr><td>
+          <% if current_user != nil && @question.user_id == current_user.id %>
+            <%= link_to("編集", "/questions/#{@question.id}/edit") %><br/>
+            <%= link_to("削除", "/questions/#{@question.id}", method: :delete, data: {confirm: "本当に削除しますか？"}) %>
+          <% end %>
+        </tr></td>
+    </tbody>
+  </table> 
+
+  <h5>回答 <span class="text-danger"><%=@question.answer.count%></span> 件</h5><hr>
+  <% @question.answer.each do |answer| %>
+    <p><%= answer.body %></p>
+    <div class="row ml-1">
+      <p class="small"><%= answer.user.name %></p>
+      <p class="small ml-5">投稿　<%= answer.created_at.strftime('%Y/%m/%d %H:%M')%></p>
+      <p class="small ml-5">高評価:<%= answer.likes.count %></p>
+      <% if current_user != nil%>
+        <% if current_user.already_liked?(answer) %>
+          <p class="ml-3"> <%= button_to '− 取消す', answer_like_path(answer), class: "btn btn-outline-primary btn-sm", method: :delete %></p>
+        <% else %>
+          <p class="ml-3"> <%= button_to '＋ 高評価', answer_likes_path(answer), class: "btn btn-outline-danger btn-sm" %></p>
+        <% end %>
+      <% end %>
+    </div><hr>
+  <% end %>
+
+
+  <div class="form-group mt-5">
+    <%= form_with(model: [@question, @answer], local: true) do |f| %>
+      <div class="answer-body mb-2">
+        <%= f.label :body, "あなたの回答" %>
+        <%= f.rich_text_area :body, class:"form-control" ,placeholder: '回答を入力してください。'  %>
+      </div>
+      <button type="submit" class="btn btn-secondary btn-lgy">回答する</button>
     <% end %>
-  </tbody>
-</table> 
-</div>
+  </div>
+</div><%# container %>
