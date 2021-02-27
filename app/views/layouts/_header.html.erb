@@ -15,7 +15,7 @@
     <% if user_signed_in? %>
       <li class="nav-item">
    
-        <%= link_to "/questions/new", class: "nav-link" do %>
+        <%= link_to "/questions/cautions", class: "nav-link" do %>
              <span class="material-icons">live_help</span>質問する
         <%end%>
       </li>
@@ -54,8 +54,8 @@
 
     <form class="form-inline my-2 my-lg-1">
       <%= search_form_for @q do |f| %>
-          <%= f.search_field :title_cont ,placeholder: 'キーワードで検索', class:"form-control form-control-sm" %>
-         <%= f.submit ("検索"), class: 'btn btn-outline-primary btn-sm type="submit"' %>
+        <%= f.search_field :title_cont ,placeholder: 'キーワードで検索', class:"form-control form-control-sm" %>
+        <%= f.submit ("検索"), class: 'btn btn-outline-primary btn-sm ml-1 type="submit"' %>
       <% end %>
     </form>
 

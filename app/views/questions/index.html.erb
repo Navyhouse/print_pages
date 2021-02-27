@@ -10,10 +10,10 @@
   <div class="container">
   <div class="row">
 
-    <div class="col-xs-12 col-lg-9"> <%# 左側の項目をPC8/12 スマホ12/12幅で設定 %>
+    <div class="col-md-12 col-lg-9"> <%# 左側の項目をPC8/12 スマホ12/12幅で設定 %>
       <%# bootstrap4でタブを実装 %>
    <nav>
-    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+    <div class="nav nav-tabs mt-3" id="nav-tab" role="tablist">
       <a class="nav-item nav-link active" id="nav-new-tab" data-toggle="tab" href="#nav-new" role="tab" aria-controls="nav-new" aria-selected="true">新着</a>
       <a class="nav-item nav-link" id="nav-active-tab" data-toggle="tab" href="#nav-active" role="tab" aria-controls="nav-active" aria-selected="false">アクティブ</a>
       <a class="nav-item nav-link" id="nav-unanswerd-tab" data-toggle="tab" href="#nav-unanswerd" role="tab" aria-controls="nav-unanswerd" aria-selected="false">未回答</a>      
@@ -135,12 +135,12 @@
       <%= paginate @question %>
 
       <%# 質問するボタンで画面遷移 %>
-      <%=link_to("questions/new") do %>
+      <%=link_to("questions/cautions") do %>
         <button class="btn btn-secondary btn-md" >質問する</button> 
       <%end%> 
     </div> <%# 左側の項目を8/12幅で設定の /div %>
 
-    <div class="d-none d-md-block col-lg-3"> <%#右側の項目を4/12幅で設定%>
+    <div class="d-none d-lg-block col-lg-3"> <%#右側の項目を4/12幅で設定%>
       <%#　「はじめてみましょう」リスト %>
       <div class="small card mt-3" style="width: rem; ">
         <div class="card-header"> はじめてみましょう！</div>

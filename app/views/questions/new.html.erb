@@ -7,7 +7,7 @@
     <%# </div> %>
 
     <h4>質問する</h4>
-    <div class="p-3 mb-2 bg-light text-dark">
+    <div class="p-3 mb-2 bg-light">
       <p>良い回答を得るために</p>
       <p>回答してくれる方がわかりやすいような質問を心がけましょう。</br>
          具体的な事象や画像、既に施工した事を記載すると議論にならずにスムーズに回答が得られやすくなります。</br>
@@ -27,7 +27,7 @@
         <%= f.label :tag_list, "タグをカンマ区切りで入力" %>
         <%= text_field_tag "question[tag_list]", @question.tag_list.join(","), class:"form-control", data: {role: "tagsinput"} %>
       </div>
-      <button type="submit" class="btn btn-dark">質問する</button>
+      <button type="submit" class="btn btn-dark btn-lg">投稿</button>
     <% end %>
   
 </div>

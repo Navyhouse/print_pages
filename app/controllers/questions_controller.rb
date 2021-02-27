@@ -11,6 +11,9 @@ class QuestionsController < ApplicationController
         @users= User.all
         @random = Question.order("RANDOM()").limit(1)
     end
+
+    def cautions
+    end
     
     def show
         @question = Question.find(params[:id])

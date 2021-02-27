@@ -2,15 +2,33 @@
 <div class="row">
 
   <div class="col">
-    <div class="card border-info mb-3">
+    <div class="card border-info mb-3 mt-3">
      <div class="card-header">ユーザー情報</div>
        <div class="card-body">
          <p class="card-text">ユーザーネーム：<%= @user.name %></p>
+         <p class="card-text">ユーザーID：<%= @user.id %></p> 
+         <p class="card-text">紹介文：<%= @user.name %>です。よろしく。</p>
         　<% if current_user != nil && @user.id == current_user.id %>
             <p><%= link_to("編集", "/users/#{@user.id}/edit") %></p>
           <% end %>
        </div>
    </div>
+
+    <div class="card border-info mb-3">
+      <div class="card-header">ユーザーランキング</div>
+      <div class="card-body">
+        <p class="card-text">coming soon・・・</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="card border-info mb-3 mt-3">
+      <div class="card-header">新着情報</div>
+      <div class="card-body">
+        <p class="card-text">ここに新着情報が入ります</p>
+      </div>
+    </div>
 
     <div class="card border-info mb-3">
       <div class="card-header">あなたの質問</div>
@@ -21,22 +39,6 @@
            <% end %>
          </ul>
        </div>
-    </div>
-  </div>
-
-  <div class="col">
-    <div class="card border-info mb-3">
-      <div class="card-header">新着情報</div>
-      <div class="card-body">
-        <p class="card-text">ここに新着情報が入ります</p>
-      </div>
-    </div>
-
-    <div class="card border-info mb-3">
-      <div class="card-header">ここはフリースペース</div>
-      <div class="card-body">
-        <p class="card-text">comeing soon,</p>
-      </div>
     </div>
   </div>
 
