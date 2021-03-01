@@ -4,7 +4,7 @@
         <h3>質問する前に確認していただきたいこと</h3>
     </div>
 
-    <div class="cautions-content mt-5">
+    <div class="cautions-content mt-2">
         <p class="">スムーズな問題解決のため、質問を投稿する際に守っていただきたいことがあります。</p>
 
         <div class="col mt-5">
@@ -28,20 +28,24 @@
             <p class="">投稿いただいた質問や回答は、同じ問題を抱えている人の貴重な情報になるため削除することができません<br/>
                質問内容に公開してはいけない情報が含まれていないか投稿前にお確かめください。</p>
         </div>
-    </div>
 
-    <div class="mt-5">
-        <p class="list-group lead">推奨していない質問</p>
-        <ul>
-            <li class="list-group-item">印刷に関係のない質問</li>
-            <li class="list-group-item list-group-item-secondary">丸投げの質問</li>
-            <li class="list-group-item">問題・課題が含まれていない質問</li>
-            <li class="list-group-item list-group-item-secondary">過去に投稿した質問と同じ内容の質問</li>
-            <li class="list-group-item">広告と受け取られるような質問</li>
-        </ul>
-        <%=link_to("new") do %>
-            <button class="btn btn-secondary btn-lg mx-auto" >質問する</button> 
-        <%end%> 
+        <div class="mt-5">
+            <p class="list-group lead">推奨していない質問</p>
+            <ul>
+                <li class="list-group-item">印刷に関係のない質問</li>
+                <li class="list-group-item list-group-item-secondary">丸投げの質問</li>
+                <li class="list-group-item">問題・課題が含まれていない質問</li>
+                <li class="list-group-item list-group-item-secondary">過去に投稿した質問と同じ内容の質問</li>
+                <li class="list-group-item">広告と受け取られるような質問</li>
+            </ul>
+        </div>
+
+        <div class="new_button mt-5">
+            <%=link_to("new") do %>
+                <button class="btn btn-secondary btn-lg mx-auto d-block" >質問する</button> 
+            <%end%> 
+        </div>
+
     </div>
 
 </div>

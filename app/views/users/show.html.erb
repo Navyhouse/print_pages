@@ -6,7 +6,7 @@
      <div class="card-header">ユーザー情報</div>
        <div class="card-body">
          <p class="card-text">ユーザーネーム：<%= @user.name %></p>
-         <p class="card-text">ユーザーID：<%= @user.id %></p> 
+         <p class="card-text">ユーザー：<%= @user.id %></p> 
          <p class="card-text">紹介文：<%= @user.name %>です。よろしく。</p>
         　<% if current_user != nil && @user.id == current_user.id %>
             <p><%= link_to("編集", "/users/#{@user.id}/edit") %></p>
