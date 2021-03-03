@@ -7,25 +7,24 @@
   </div>
 </div>
 
-  <div class="container">
+<div class="container">
   <div class="row">
-
-    <div class="col-md-12 col-lg-9"> <%# 左側の項目をPC8/12 スマホ12/12幅で設定 %>
+    <div class="col-sm-12 col-lg-9"> <%# 左側の項目をPC8/12 スマホ12/12幅で設定 %>
       <%# bootstrap4でタブを実装 %>
-   <nav>
-    <div class="nav nav-tabs mt-3" id="nav-tab" role="tablist">
-      <a class="nav-item nav-link active" id="nav-new-tab" data-toggle="tab" href="#nav-new" role="tab" aria-controls="nav-new" aria-selected="true">新着</a>
-      <a class="nav-item nav-link" id="nav-active-tab" data-toggle="tab" href="#nav-active" role="tab" aria-controls="nav-active" aria-selected="false">アクティブ</a>
-      <a class="nav-item nav-link" id="nav-unanswerd-tab" data-toggle="tab" href="#nav-unanswerd" role="tab" aria-controls="nav-unanswerd" aria-selected="false">未回答</a>      
-      <a class="nav-item nav-link" id="nav-unsolved-tab" data-toggle="tab" href="#nav-unsolved" role="tab" aria-controls="nav-unsolved" aria-selected="false">未解決</a>
-      <a class="nav-item nav-link" id="nav-solved-tab" data-toggle="tab" href="#nav-solved" role="tab" aria-controls="nav-unsolved" aria-selected="false">解決済</a>
-    </div>
-  </nav>
+      <nav>
+        <div class="nav nav-tabs mt-3 flex-nowrap" id="nav-tab" role="tablist">
+          <a class="nav-item nav-link active text-nowrap" id="nav-new-tab" data-toggle="tab" href="#nav-new" role="tab" aria-controls="nav-new" aria-selected="true">新着</a>
+          <a class="nav-item nav-link text-nowrap" id="nav-active-tab" data-toggle="tab" href="#nav-active" role="tab" aria-controls="nav-active" aria-selected="false">アクティブ</a>
+          <a class="nav-item nav-link text-nowrap" id="nav-unanswerd-tab" data-toggle="tab" href="#nav-unanswerd" role="tab" aria-controls="nav-unanswerd" aria-selected="false">未回答</a>      
+          <a class="nav-item nav-link text-nowrap" id="nav-unsolved-tab" data-toggle="tab" href="#nav-unsolved" role="tab" aria-controls="nav-unsolved" aria-selected="false">未解決</a>
+          <a class="nav-item nav-link text-nowrap" id="nav-solved-tab" data-toggle="tab" href="#nav-solved" role="tab" aria-controls="nav-unsolved" aria-selected="false">解決済</a>
+        </div>
+      </nav>
   
-  <div class="tab-content" id="nav-tabContent">
-    <div class="tab-pane fade show active" id="nav-new" role="tabpanel" aria-labelledby="nav-new-tab">
+    <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane fade show active" id="nav-new" role="tabpanel" aria-labelledby="nav-new-tab">
         <%# questionハッシュから取り出してリストに表示 %>
-      <table class="table mt-6 mb-5">
+        <table class="table mt-6 mb-5">
           <% @question.each do |question| %>
             <tr>
               <td class="small">回答<%= question.answer.count %></td>
@@ -42,10 +41,10 @@
               </td>
             </tr>
           <% end %>
-      </table>
-    </div>
+        </table>
+      </div>
 
-    <div class="tab-pane fade" id="nav-active" role="tabpanel" aria-labelledby="nav-active-tab">
+      <div class="tab-pane fade" id="nav-active" role="tabpanel" aria-labelledby="nav-active-tab">
         <table class="table mt-6 mb-5">
           <% @question.each do |question| %>
             <tr>
@@ -63,10 +62,10 @@
               </td>
             </tr>
           <% end %>
-      </table>
-    </div>
+        </table>
+      </div>
 
-   <div class="tab-pane fade" id="nav-unanswerd" role="tabpanel" aria-labelledby="nav-unanswerd-tab">
+      <div class="tab-pane fade" id="nav-unanswerd" role="tabpanel" aria-labelledby="nav-unanswerd-tab">
         <table class="table mt-6 mb-5">
           <% @question.each do |question| %>
             <tr>
@@ -84,10 +83,10 @@
               </td>
             </tr>
           <% end %>
-      </table>
-    </div>
+        </table>
+      </div>
 
-    <div class="tab-pane fade" id="nav-unsolved" role="tabpanel" aria-labelledby="nav-unsolved-tab">
+      <div class="tab-pane fade" id="nav-unsolved" role="tabpanel" aria-labelledby="nav-unsolved-tab">
           <table class="table mt-6 mb-5">
           <% @question.each do |question| %>
             <tr>
@@ -105,10 +104,10 @@
               </td>
             </tr>
           <% end %>
-      </table>
-    </div>
+        </table>
+      </div>
 
-    <div class="tab-pane fade" id="nav-solved" role="tabpanel" aria-labelledby="nav-solved-tab">
+      <div class="tab-pane fade" id="nav-solved" role="tabpanel" aria-labelledby="nav-solved-tab">
           <table class="table mt-6 mb-5">
           <% @question.each do |question| %>
             <tr>
@@ -126,17 +125,18 @@
               </td>
             </tr>
           <% end %>
-      </table>
+        </table>
+      </div>
     </div>
 
-  </div>
-
       <%# ページネーションを表示kaminari %>
+      <div class="d-flex align-items-center justify-content-center">
       <%= paginate @question %>
+      </div>
 
       <%# 質問するボタンで画面遷移 %>
       <%=link_to("questions/cautions") do %>
-        <button class="btn btn-secondary btn-md" >質問する</button> 
+        <button class="btn btn-secondary mt-3 btn-md mx-auto d-block" >質問する</button> 
       <%end%> 
     </div> <%# 左側の項目を8/12幅で設定の /div %>
 
@@ -153,6 +153,17 @@
           </ul>
       </div>
 
+      <%# ユーザーランキングの項目 %>
+      <table class="small table mt-3" style="width: 17rem;">
+        <tr><th>ユーザーランキング</th></tr>
+        <% @users.each do |user| %>
+            <tr>
+              <td><%= user.id %></td>
+              <td><%= link_to user.name, user_path(user) %></td>
+            </tr>
+        <% end %>
+      </table>
+
       <%# 回答してみませんかリスト %>
       <div class="small card mt-3 border-danger" style="width: rem;">
         <div class="card-header alert-danger">回答してみませんか？</div>
@@ -165,19 +176,19 @@
           </ul>
       </div>
 
-      <%# ユーザーランキングの項目 %>
-      <table class="small table mt-3" style="width: 17rem;">
-        <tr><th>ユーザーランキング</th></tr>
-        <% @users.each do |user| %>
-            <tr>
-              <td><%= user.id %></td>
-              <td><%= link_to user.name, user_path(user) %></td>
-            </tr>
-        <% end %>
-      </table>
+      <div class="card mt-3">
+        <div class="add">
+        <p>　</p>
+        <p>　</p>
+        <p>ここに広告が入ります</p>
+        <p>　</p>
+        <p>　</p>
+        </div>
+      </div>
+
     </div> <%# 右側の項目を4/12幅で設定の /div %>
 
   </div>
-  </div>
+</div>
 
 
