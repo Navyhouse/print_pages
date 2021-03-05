@@ -11,8 +11,8 @@
 <div class="row">
 
   <div class="col-sm-12 col-lg-6">
-    <div class="card border-info mb-3 mt-3">
-     <div class="card-header">ユーザー情報</div>
+    <div class="card border-warning mb-3 mt-3">
+     <div class="card-header alert-warning">ユーザー情報</div>
        <div class="card-body">
          <p class="card-text">ユーザーネーム：<%= @user.name %></p>
          <p class="card-text">ユーザー：<%= @user.id %></p> 
@@ -23,8 +23,8 @@
        </div>
    </div>
 
-    <div class="card border-info mb-3">
-      <div class="card-header">ユーザーランキング</div>
+    <div class="card border-danger mb-3">
+      <div class="card-header alert-danger">ユーザーランキング</div>
       <div class="card-body">
         <p class="card-text">coming soon・・・</p>
       </div>
@@ -32,15 +32,15 @@
   </div>
 
   <div class="col-sm-12 col-lg-6">
-    <div class="card border-info mb-3 mt-3">
-      <div class="card-header">新着情報</div>
+    <div class="card border-primary mb-3 mt-3">
+      <div class="card-header alert-primary">新着情報</div>
       <div class="card-body">
         <p class="card-text">ここに新着情報が入ります</p>
       </div>
     </div>
 
-    <div class="card border-info mb-3">
-      <div class="card-header">あなたの質問</div>
+    <div class="card border-dark mb-3">
+      <div class="card-header alert-dark">あなたの質問</div>
        <div class="card-body">
          <ul class="list-group list-group-flush">
            <% @user.question.each do |question| %>
