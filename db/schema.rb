@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_17_223706) do
+ActiveRecord::Schema.define(version: 2021_03_05_233257) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -93,6 +93,7 @@ ActiveRecord::Schema.define(version: 2020_11_17_223706) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
     t.string "image"
+    t.boolean "finished", default: false, null: false
     t.index ["user_id"], name: "index_questions_on_user_id"
   end
 

@@ -27,6 +27,7 @@
         <table class="table mt-6 mb-5">
           <% @question.each do |question| %>
             <tr>
+              <td class="small"><%= question.finished ? '解決済' : '受付中' %></td>
               <td class="small">回答<%= question.answer.count %></td>
               <td class="font-weight-bold">
                 <%= link_to question.title, question_path(question) %><br>
