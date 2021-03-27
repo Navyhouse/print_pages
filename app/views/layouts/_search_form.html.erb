@@ -1,8 +1,7 @@
-<%= search_form_for q, url: url do |f| %> 
-  <div class="input-group mb-3">
-    <%= f.search_field :title_or_body_cont, class: "form-control", placeholder: '検索ワード' %>
-    <div class="input-group-append">
-      <%= f.submit "検索", class: "btn btn-primary" %>
-    </div>
-  </div>
+<%#検索ボタン%>
+<form class="form-inline my-2 my-lg-1 ">
+<%= search_form_for @q do |f| %>
+<%= f.search_field :title_cont ,placeholder: 'キーワードで検索', class:"form-control form-control-sm" %>
+<%= f.submit ("検索"), class: 'btn btn-outline-primary btn-sm ml-1 type="submit"' %>
 <% end %>
+</form>

@@ -7,7 +7,8 @@ class QuestionsController < ApplicationController
     def index
         @test = "Welcome PrintPages!!" 
         @q = Question.search(params[:q])
-        @question = @q.result(distinct: true).order(created_at: "DESC").page(params[:page]).per(15) 
+        @question = @q.result(distinct: true).order(created_at: "DESC").page(params[:page]).per(15)
+        @question_sec = @q.result(distinct: true).order(answer: "DESC").page(params[:page]).per(15) 
         @users= User.all
         @random = Question.order("RANDOM()").limit(1)
     end

@@ -1,44 +1,45 @@
 <div class="card bg-dark">
   <img src="/assets/cmyk-2768200_1920.jpg" class="card-img" alt="...">
   <div class="card-img-overlay">
-    <h3 class="card-title text-center d-none d-md-block">質問することでしか得られない回答やアドバイスがある。</h3>
-    <p class="card-text text-center d-none d-md-block">30分調べてもわからないことは質問しよう。</p>
+    <h1 class="card-title text-center">Print Pages</h1>
+    <p class="card-title text-center d-none d-md-block">あなたの回答が未来を作る</p>
+    <p class="card-text text-center d-none d-md-block">知識と経験を次の世代に受け継ぐことで<br>あなたの回答が未来の財産になります。</p>
   </div>
 </div>
 
 <div class="container">
-<div class="table-responsive">
-  <table class="table mt-3 mb-5">
-    <tbody>
-        <tr class="p-4 table-secondary text-dark">
-          <td colspan="5" class="font-weight-bold lead"><%= @question.title %></td>
-        </tr>
-        <tr class="p-4 table-secondary text-dark">
-          <td class="small"><%= @question.finished ? '解決済' : '受付中' %></td>
-          <td class="small">投稿　<%= @question.created_at.strftime('%Y/%m/%d %H:%M') %></td>
-          <td class="small"><%= @question.user.name %></td>
-          <td class="small">回答　<%= @question.answer.count %>件</td>
-          <td class="small">View　<%= @question.impressionist_count %></td>
-        </tr>
-        <tr><td colspan="5"><%= @question.body %></td></tr>
-        <tr><td colspan="5">
-          <% @question.tag_list.each do |tag| %>
-            <span class="badge badge-info"><%= tag %></span>
-          <% end %>
-          </td></tr>
-        <tr><td>
-          <% if current_user != nil && @question.user_id == current_user.id %>
-            <%= link_to("編集", "/questions/#{@question.id}/edit") %><br/>
-            <%= link_to("削除", "/questions/#{@question.id}", method: :delete, data: {confirm: "本当に削除しますか？"}) %></br>
-            <% if @question.finished %>
-              <%= link_to '受付中に戻す', question_path(@question.id, question: {finished: false}), method: :put %>
-            <% else %>
-              <%= link_to '解決済みにする', question_path(@question.id, question: {finished: true}), method: :put,  data: {confirm: "この操作は取り消せませんが本当に解決済みにしますか？"}%>
+  <div class="table-responsive">
+    <table class="table mt-3 mb-5">
+      <tbody>
+          <tr class="p-4 table-secondary text-dark">
+            <td colspan="5" class="font-weight-bold lead"><%= @question.title %></td>
+          </tr>
+          <tr class="p-4 table-secondary text-dark">
+            <td class="small"><%= @question.finished ? '解決済' : '受付中' %></td>
+            <td class="small">投稿　<%= @question.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+            <td class="small"><%= @question.user.name %></td>
+            <td class="small">回答　<%= @question.answer.count %>件</td>
+            <td class="small">View　<%= @question.impressionist_count %></td>
+          </tr>
+          <tr><td colspan="5"><%= @question.body %></td></tr>
+          <tr><td colspan="5">
+            <% @question.tag_list.each do |tag| %>
+              <span class="badge badge-info"><%= tag %></span>
             <% end %>
-          <% end %>
-        </tr></td>
-    </tbody>
-  </table> 
+          </td></tr>
+          <tr><td>
+            <% if current_user != nil && @question.user_id == current_user.id %>
+              <%= link_to("編集", "/questions/#{@question.id}/edit") %><br/>
+              <%= link_to("削除", "/questions/#{@question.id}", method: :delete, data: {confirm: "本当に削除しますか？"}) %></br>
+              <% if @question.finished %>
+                <%= link_to '受付中に戻す', question_path(@question.id, question: {finished: false}), method: :put %>
+              <% else %>
+                <%= link_to '解決済みにする', question_path(@question.id, question: {finished: true}), method: :put,  data: {confirm: "この操作は取り消せませんが本当に解決済みにしますか？"}%>
+              <% end %>
+            <% end %>
+          </tr></td>
+      </tbody>
+    </table> 
   </div>
 
   <h5>回答 <span class="text-danger"><%=@question.answer.count%></span> 件</h5><hr>

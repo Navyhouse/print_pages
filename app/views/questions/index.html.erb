@@ -21,114 +21,7 @@
         </div>
       </nav>
   
-    <div class="tab-content" id="nav-tabContent">
-      <div class="tab-pane fade show active" id="nav-new" role="tabpanel" aria-labelledby="nav-new-tab">
-        <%# questionハッシュから取り出してリストに表示 %>
-        <table class="table mt-6 mb-5">
-          <% @question.each do |question| %>
-            <tr>
-              <td class="small"><%= question.finished ? '解決済' : '受付中' %></td>
-              <td class="small">回答<%= question.answer.count %></td>
-              <td class="font-weight-bold">
-                <%= link_to question.title, question_path(question) %><br>
-                <% question.tag_list.each do |tag| %>
-                  <small><span class="badge badge badge-secondary"><%= tag %></span></small>
-                <% end %>
-              </td>
-              <td class="small">
-                <%= question.user.name %><br>
-                <%# <td><%= question.created_at.strftime('%Y/%m/%d %H:%M')%>
-                <%= time_ago_in_words(question.created_at)+"前" %>
-              </td>
-            </tr>
-          <% end %>
-        </table>
-      </div>
-
-      <div class="tab-pane fade" id="nav-active" role="tabpanel" aria-labelledby="nav-active-tab">
-        <table class="table mt-6 mb-5">
-          <% @question.each do |question| %>
-            <tr>
-              <td class="small">active<%= question.answer.count %></td>
-              <td class="font-weight-bold">
-                <%= link_to question.title, question_path(question) %><br>
-                <% question.tag_list.each do |tag| %>
-                  <small><span class="badge badge badge-secondary"><%= tag %></span></small>
-                <% end %>
-              </td>
-              <td class="small">
-                <%= question.user.name %><br>
-                <%# <td><%= question.created_at.strftime('%Y/%m/%d %H:%M')%>
-                <%= time_ago_in_words(question.created_at)+"前" %>
-              </td>
-            </tr>
-          <% end %>
-        </table>
-      </div>
-
-      <div class="tab-pane fade" id="nav-unanswerd" role="tabpanel" aria-labelledby="nav-unanswerd-tab">
-        <table class="table mt-6 mb-5">
-          <% @question.each do |question| %>
-            <tr>
-              <td class="small">まだ回答がないよ<%= question.answer.count %></td>
-              <td class="font-weight-bold">
-                <%= link_to question.title, question_path(question) %><br>
-                <% question.tag_list.each do |tag| %>
-                  <small><span class="badge badge badge-secondary"><%= tag %></span></small>
-                <% end %>
-              </td>
-              <td class="small">
-                <%= question.user.name %><br>
-                <%# <td><%= question.created_at.strftime('%Y/%m/%d %H:%M')%>
-                <%= time_ago_in_words(question.created_at)+"前" %>
-              </td>
-            </tr>
-          <% end %>
-        </table>
-      </div>
-
-      <div class="tab-pane fade" id="nav-unsolved" role="tabpanel" aria-labelledby="nav-unsolved-tab">
-          <table class="table mt-6 mb-5">
-          <% @question.each do |question| %>
-            <tr>
-              <td class="small">まだ解決してないよ<%= question.answer.count %></td>
-              <td class="font-weight-bold">
-                <%= link_to question.title, question_path(question) %><br>
-                <% question.tag_list.each do |tag| %>
-                  <small><span class="badge badge badge-secondary"><%= tag %></span></small>
-                <% end %>
-              </td>
-              <td class="small">
-                <%= question.user.name %><br>
-                <%# <td><%= question.created_at.strftime('%Y/%m/%d %H:%M')%>
-                <%= time_ago_in_words(question.created_at)+"前" %>
-              </td>
-            </tr>
-          <% end %>
-        </table>
-      </div>
-
-      <div class="tab-pane fade" id="nav-solved" role="tabpanel" aria-labelledby="nav-solved-tab">
-          <table class="table mt-6 mb-5">
-          <% @question.each do |question| %>
-            <tr>
-              <td class="small">解決したよ<%= question.answer.count %></td>
-              <td class="font-weight-bold">
-                <%= link_to question.title, question_path(question) %><br>
-                <% question.tag_list.each do |tag| %>
-                  <small><span class="badge badge badge-secondary"><%= tag %></span></small>
-                <% end %>
-              </td>
-              <td class="small">
-                <%= question.user.name %><br>
-                <%# <td><%= question.created_at.strftime('%Y/%m/%d %H:%M')%>
-                <%= time_ago_in_words(question.created_at)+"前" %>
-              </td>
-            </tr>
-          <% end %>
-        </table>
-      </div>
-    </div>
+    <%= render 'questions/tabcontent' %>
 
       <%# ページネーションを表示kaminari %>
       <div class="d-flex align-items-center justify-content-center">
@@ -146,11 +39,11 @@
       <div class="small card mt-3" style="width: rem; ">
         <div class="card-header"> はじめてみましょう！</div>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item">PrintPagesへログインする</li>
-            <li class="list-group-item">PrintPagesの簡単な説明を読む</li>
-            <li class="list-group-item">５つのMYタグを登録する</li>
-            <li class="list-group-item">３つの回答へ高評価（＋）をする</li>
-            <li class="list-group-item">回答または質問を投稿する</li>
+            <li class="list-group-item">1. PrintPagesへログインする</li>
+            <li class="list-group-item">2. PrintPagesの簡単な説明を読む</li>
+            <li class="list-group-item">3. ５つのMYタグを登録する</li>
+            <li class="list-group-item">4. ３つの回答へ高評価（＋）をする</li>
+            <li class="list-group-item">5. 回答または質問を投稿する</li>
           </ul>
       </div>
 
@@ -178,10 +71,10 @@
       </div>
 
       <div class="card mt-3">
-        <div class="add">
+        <div class="ad_place">
         <p>　</p>
         <p>　</p>
-        <p>ここに広告が入ります</p>
+        <p>　ここに広告が入ります</p>
         <p>　</p>
         <p>　</p>
         </div>
