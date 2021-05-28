@@ -6,7 +6,7 @@ class QuestionsController < ApplicationController
 
     def index
         @q = Question.search(params[:q])
-        @question = @q.result(distinct: true).order(created_at: "DESC").page(params[:page]).per(15)
+        # @question = @q.result(distinct: true).order(created_at: "DESC").page(params[:page]).per(15)
         @users= User.all
         @random = Question.order("RANDOM()").limit(1)
     end

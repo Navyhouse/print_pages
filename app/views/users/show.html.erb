@@ -8,10 +8,6 @@
 </div>
 
 <div class="container">
-<div class="row">
-
-  <div class="col-sm-12 col-lg-6">
-    <div class="card border-warning mb-3 mt-3">
      <div class="card-header alert-warning">ユーザー情報</div>
        <div class="card-body">
          <p class="card-text">ユーザーネーム：<%= @user.name %></p>
@@ -20,26 +16,18 @@
         　<% if current_user != nil && @user.id == current_user.id %>
             <p><%= link_to("編集", "/users/#{@user.id}/edit") %></p>
           <% end %>
-       </div>
-   </div>
 
-    <div class="card border-danger mb-3">
       <div class="card-header alert-danger">ユーザーランキング</div>
       <div class="card-body">
         <p class="card-text">coming soon・・・</p>
       </div>
     </div>
-  </div>
-
-  <div class="col-sm-12 col-lg-6">
-    <div class="card border-primary mb-3 mt-3">
+ 
       <div class="card-header alert-primary">新着情報</div>
       <div class="card-body">
         <p class="card-text">ここに新着情報が入ります</p>
       </div>
-    </div>
 
-    <div class="card border-dark mb-3">
       <div class="card-header alert-dark">あなたの質問</div>
        <div class="card-body">
          <ul class="list-group list-group-flush">
@@ -48,8 +36,4 @@
            <% end %>
          </ul>
        </div>
-    </div>
-  </div>
-
-</div>
 </div>
