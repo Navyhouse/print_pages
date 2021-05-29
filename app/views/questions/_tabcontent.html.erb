@@ -4,7 +4,8 @@
     <table class="table mb-5">
       <% @question.each do |question| %>
         <tr>
-          <td class="small font-weight-bold"><%= question.finished ? '解決済' : '受付中' %><br>
+          <td class="small font-weight-bold">
+            <%# <%= question.finished ? '解決済' : '受付中' %>
             <% if question.answer.count == 0 %>
                 回答<span class="text-danger"><%= question.answer.count %></span>
             <% else %>
